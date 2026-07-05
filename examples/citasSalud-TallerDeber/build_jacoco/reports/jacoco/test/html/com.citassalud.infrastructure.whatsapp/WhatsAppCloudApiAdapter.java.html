@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>WhatsAppCloudApiAdapter.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">spring-boot-citasSalud</a> &gt; <a href="index.source.html" class="el_package">com.citassalud.infrastructure.whatsapp</a> &gt; <span class="el_source">WhatsAppCloudApiAdapter.java</span></div><h1>WhatsAppCloudApiAdapter.java</h1><pre class="source lang-java linenums">package com.citassalud.infrastructure.whatsapp;
+
+import com.citassalud.application.port.WhatsAppGatewayPort;
+import com.citassalud.domain.cita.Cita;
+import com.citassalud.domain.medico.Medico;
+import com.citassalud.domain.paciente.Paciente;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.client.JdkClientHttpRequestFactory;
+import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestClient;
+import org.springframework.web.client.RestClientResponseException;
+
+import java.net.http.HttpClient;
+import java.time.Duration;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
+import java.util.Locale;
+
+/**
+ * Adaptador HTTP hacia WhatsApp Cloud API de Meta (research.md §1).
+ * Reintenta hasta 3 veces con espaciamiento creciente ante fallos temporales (5xx/conexión)
+ * del proveedor, según las Suposiciones de spec.md. Los errores del cliente (4xx, por ejemplo
+ * un número de destino inválido) se consideran permanentes y no se reintentan.
+ */
+@Component
+public class WhatsAppCloudApiAdapter implements WhatsAppGatewayPort {
+
+<span class="fc" id="L31">    private static final Logger LOG = LoggerFactory.getLogger(WhatsAppCloudApiAdapter.class);</span>
+    private static final int MAX_INTENTOS = 3;
+<span class="fc" id="L33">    private static final DateTimeFormatter FORMATO_FECHA_HORA =</span>
+<span class="fc" id="L34">            DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM, FormatStyle.SHORT).withLocale(Locale.of(&quot;es&quot;, &quot;CO&quot;));</span>
+
+    private final RestClient restClient;
+    private final String numeroTelefonoId;
+    private final long espaciamientoBaseMs;
+
+    public WhatsAppCloudApiAdapter(RestClient.Builder restClientBuilder,
+                                    @Value(&quot;${whatsapp.cloud-api.base-url}&quot;) String baseUrl,
+                                    @Value(&quot;${whatsapp.cloud-api.numero-telefono-id}&quot;) String numeroTelefonoId,
+                                    @Value(&quot;${whatsapp.cloud-api.token-acceso}&quot;) String tokenAcceso,
+<span class="fc" id="L44">                                    @Value(&quot;${whatsapp.cloud-api.reintento.espaciamiento-base-ms:2000}&quot;) long espaciamientoBaseMs) {</span>
+<span class="fc" id="L45">        HttpClient jdkHttpClient = HttpClient.newBuilder()</span>
+<span class="fc" id="L46">                .version(HttpClient.Version.HTTP_1_1)</span>
+<span class="fc" id="L47">                .build();</span>
+<span class="fc" id="L48">        this.restClient = restClientBuilder</span>
+<span class="fc" id="L49">                .baseUrl(baseUrl)</span>
+<span class="fc" id="L50">                .requestFactory(new JdkClientHttpRequestFactory(jdkHttpClient))</span>
+<span class="fc" id="L51">                .defaultHeader(&quot;Authorization&quot;, &quot;Bearer &quot; + tokenAcceso)</span>
+<span class="fc" id="L52">                .build();</span>
+<span class="fc" id="L53">        this.numeroTelefonoId = numeroTelefonoId;</span>
+<span class="fc" id="L54">        this.espaciamientoBaseMs = espaciamientoBaseMs;</span>
+<span class="fc" id="L55">    }</span>
+
+    @Override
+    public ResultadoEnvioWhatsApp enviarRecordatorio(Paciente paciente, Medico medico, Cita cita) {
+<span class="fc" id="L59">        String texto = construirMensajeRecordatorio(paciente, medico, cita);</span>
+<span class="fc" id="L60">        return enviarConReintentos(paciente.getNumeroWhatsapp(), texto);</span>
+    }
+
+    @Override
+    public void enviarConfirmacionCancelacion(Paciente paciente, Cita cita) {
+<span class="fc" id="L65">        enviarConReintentos(paciente.getNumeroWhatsapp(),</span>
+                &quot;Su cita ha sido cancelada exitosamente. La franja horaria quedó disponible nuevamente.&quot;);
+<span class="fc" id="L67">    }</span>
+
+    @Override
+    public void enviarAclaracion(Paciente paciente) {
+<span class="fc" id="L71">        enviarConReintentos(paciente.getNumeroWhatsapp(),</span>
+                &quot;No reconocimos su respuesta. Para cancelar su cita, responda únicamente con la palabra CANCELAR.&quot;);
+<span class="fc" id="L73">    }</span>
+
+    @Override
+    public void enviarRechazoPorVentanaVencida(Paciente paciente) {
+<span class="fc" id="L77">        enviarConReintentos(paciente.getNumeroWhatsapp(),</span>
+                &quot;Ya no es posible cancelar esta cita por este canal. Por favor, contacte directamente al centro de salud.&quot;);
+<span class="fc" id="L79">    }</span>
+
+    private String construirMensajeRecordatorio(Paciente paciente, Medico medico, Cita cita) {
+<span class="fc" id="L82">        String fechaHora = FORMATO_FECHA_HORA.format(cita.getFechaHora().atZone(ZoneId.systemDefault()));</span>
+<span class="fc" id="L83">        return &quot;Hola %s, le recordamos su cita el %s con %s.&quot;.formatted(paciente.getNombre(), fechaHora, medico.getNombre());</span>
+    }
+
+    private ResultadoEnvioWhatsApp enviarConReintentos(String numeroDestino, String texto) {
+<span class="fc" id="L87">        EnvioMensajeRequest cuerpo = EnvioMensajeRequest.deTexto(numeroDestino, texto);</span>
+<span class="fc" id="L88">        int intentos = 0;</span>
+<span class="pc bpc" id="L89" title="1 of 2 branches missed.">        while (intentos &lt; MAX_INTENTOS) {</span>
+<span class="fc" id="L90">            intentos++;</span>
+            try {
+<span class="fc" id="L92">                EnvioMensajeResponse respuesta = restClient.post()</span>
+<span class="fc" id="L93">                        .uri(&quot;/{numeroTelefonoId}/messages&quot;, numeroTelefonoId)</span>
+<span class="fc" id="L94">                        .body(cuerpo)</span>
+<span class="fc" id="L95">                        .retrieve()</span>
+<span class="fc" id="L96">                        .body(EnvioMensajeResponse.class);</span>
+<span class="pc bpc" id="L97" title="1 of 2 branches missed.">                String mensajeId = respuesta != null ? respuesta.primerMensajeId() : null;</span>
+<span class="fc" id="L98">                return new ResultadoEnvioWhatsApp(true, mensajeId, intentos);</span>
+<span class="fc" id="L99">            } catch (RestClientResponseException ex) {</span>
+<span class="fc bfc" id="L100" title="All 4 branches covered.">                if (!ex.getStatusCode().is5xxServerError() || intentos &gt;= MAX_INTENTOS) {</span>
+<span class="fc" id="L101">                    LOG.warn(&quot;Fallo permanente al enviar WhatsApp a {} tras {} intento(s): {}&quot;,</span>
+<span class="fc" id="L102">                            numeroDestino, intentos, ex.getMessage());</span>
+<span class="fc" id="L103">                    return new ResultadoEnvioWhatsApp(false, null, intentos);</span>
+                }
+<span class="fc" id="L105">                esperarAntesDelSiguienteIntento(intentos);</span>
+<span class="nc" id="L106">            } catch (Exception ex) {</span>
+<span class="nc bnc" id="L107" title="All 2 branches missed.">                if (intentos &gt;= MAX_INTENTOS) {</span>
+<span class="nc" id="L108">                    LOG.warn(&quot;Fallo de conexión al enviar WhatsApp a {} tras {} intento(s): {}&quot;,</span>
+<span class="nc" id="L109">                            numeroDestino, intentos, ex.getMessage());</span>
+<span class="nc" id="L110">                    return new ResultadoEnvioWhatsApp(false, null, intentos);</span>
+                }
+<span class="nc" id="L112">                esperarAntesDelSiguienteIntento(intentos);</span>
+<span class="pc" id="L113">            }</span>
+        }
+<span class="nc" id="L115">        return new ResultadoEnvioWhatsApp(false, null, intentos);</span>
+    }
+
+    private void esperarAntesDelSiguienteIntento(int intentoActual) {
+        try {
+<span class="fc" id="L120">            Thread.sleep(Duration.ofMillis(espaciamientoBaseMs * intentoActual).toMillis());</span>
+<span class="nc" id="L121">        } catch (InterruptedException e) {</span>
+<span class="nc" id="L122">            Thread.currentThread().interrupt();</span>
+<span class="fc" id="L123">        }</span>
+<span class="fc" id="L124">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span></div></body></html>

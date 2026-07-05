@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.citassalud.integration.CitaJpaRepositoryAdapterIT" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-07-05T19:56:37.932Z" hostname="JUANPABLOAY" time="2.484">
+  <properties/>
+  <testcase name="dadasCitasEnDistintasVentanas_cuandoSeBuscaLaVentanaDe24Horas_entoncesSoloDevuelveLasQueCaenDentro()" classname="com.citassalud.integration.CitaJpaRepositoryAdapterIT" time="0.403"/>
+  <testcase name="dadaUnaCitaAgendada_cuandoSeGuardaYSeBuscaPorId_entoncesSeRecuperaConLosMismosDatos()" classname="com.citassalud.integration.CitaJpaRepositoryAdapterIT" time="0.01"/>
+  <testcase name="dadaUnaCitaCanceladaDentroDeVentana_cuandoSeBuscaLaVentanaDe24Horas_entoncesNoSeDevuelve()" classname="com.citassalud.integration.CitaJpaRepositoryAdapterIT" time="0.009"/>
+  <testcase name="dadaUnaCitaConRecordatorioEnviado_cuandoSeBuscaPorMensajeWhatsappId_entoncesSeResuelveLaCitaOrigen()" classname="com.citassalud.integration.CitaJpaRepositoryAdapterIT" time="0.009"/>
+  <system-out><![CDATA[2026-07-05T14:56:37.933-05:00  INFO 56276 --- [spring-boot-citasSalud] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.citassalud.integration.CitaJpaRepositoryAdapterIT]: CitaJpaRepositoryAdapterIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-07-05T14:56:37.934-05:00 DEBUG 56276 --- [spring-boot-citasSalud] [    Test worker] b.d.j.t.a.DataJpaTestContextBootstrapper : Using ContextCustomizerFactory implementations for test class [CitaJpaRepositoryAdapterIT]: [WebDriverContextCustomizerFactory, OnFailureConditionReportContextCustomizerFactory, OverrideAutoConfigurationContextCustomizerFactory, ImportsContextCustomizerFactory, PropertyMappingContextCustomizerFactory, ExcludeFilterContextCustomizerFactory, TypeExcludeFiltersContextCustomizerFactory, DisableReactorResourceFactoryGlobalResourcesContextCustomizerFactory, DuplicateJsonObjectContextCustomizerFactory, SpringBootTestRandomPortContextCustomizerFactory, BeanOverrideContextCustomizerFactory, MockServerContainerContextCustomizerFactory, DynamicPropertiesContextCustomizerFactory]
+2026-07-05T14:56:37.944-05:00 DEBUG 56276 --- [spring-boot-citasSalud] [    Test worker] b.d.j.t.a.DataJpaTestContextBootstrapper : Using ContextCustomizers for test class [CitaJpaRepositoryAdapterIT]: [WebDriverContextCustomizer, OnFailureConditionReportContextCustomizer, DisableAutoConfigurationContextCustomizer, ImportsContextCustomizer, PropertyMappingContextCustomizer, ExcludeFilterContextCustomizer, TypeExcludeFiltersContextCustomizer, DuplicateJsonObjectContextCustomizer, SpringBootTestRandomPortContextCustomizer, DynamicPropertiesContextCustomizer]
+2026-07-05T14:56:37.954-05:00  INFO 56276 --- [spring-boot-citasSalud] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.citassalud.SpringBootCitasSaludApplication for test class com.citassalud.integration.CitaJpaRepositoryAdapterIT
+2026-07-05T14:56:37.954-05:00  INFO 56276 --- [spring-boot-citasSalud] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.citassalud.integration.CitaJpaRepositoryAdapterIT]: CitaJpaRepositoryAdapterIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-07-05T14:56:37.955-05:00 DEBUG 56276 --- [spring-boot-citasSalud] [    Test worker] b.d.j.t.a.DataJpaTestContextBootstrapper : Using ContextCustomizerFactory implementations for test class [CitaJpaRepositoryAdapterIT]: [WebDriverContextCustomizerFactory, OnFailureConditionReportContextCustomizerFactory, OverrideAutoConfigurationContextCustomizerFactory, ImportsContextCustomizerFactory, PropertyMappingContextCustomizerFactory, ExcludeFilterContextCustomizerFactory, TypeExcludeFiltersContextCustomizerFactory, DisableReactorResourceFactoryGlobalResourcesContextCustomizerFactory, DuplicateJsonObjectContextCustomizerFactory, SpringBootTestRandomPortContextCustomizerFactory, BeanOverrideContextCustomizerFactory, MockServerContainerContextCustomizerFactory, DynamicPropertiesContextCustomizerFactory]
+2026-07-05T14:56:37.962-05:00 DEBUG 56276 --- [spring-boot-citasSalud] [    Test worker] b.d.j.t.a.DataJpaTestContextBootstrapper : Using ContextCustomizers for test class [CitaJpaRepositoryAdapterIT]: [WebDriverContextCustomizer, OnFailureConditionReportContextCustomizer, DisableAutoConfigurationContextCustomizer, ImportsContextCustomizer, PropertyMappingContextCustomizer, ExcludeFilterContextCustomizer, TypeExcludeFiltersContextCustomizer, DuplicateJsonObjectContextCustomizer, SpringBootTestRandomPortContextCustomizer, DynamicPropertiesContextCustomizer]
+2026-07-05T14:56:37.962-05:00  INFO 56276 --- [spring-boot-citasSalud] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.citassalud.SpringBootCitasSaludApplication for test class com.citassalud.integration.CitaJpaRepositoryAdapterIT
+2026-07-05T14:56:37.962-05:00 DEBUG 56276 --- [spring-boot-citasSalud] [    Test worker] b.d.j.t.a.DataJpaTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [CitaJpaRepositoryAdapterIT]: using SpringBootContextLoader
+2026-07-05T14:56:37.963-05:00 DEBUG 56276 --- [spring-boot-citasSalud] [    Test worker] b.d.j.t.a.DataJpaTestContextBootstrapper : Using TestExecutionListeners for test class [CitaJpaRepositoryAdapterIT]: [ServletTestExecutionListener, DirtiesContextBeforeModesTestExecutionListener, ApplicationEventsTestExecutionListener, BeanOverrideTestExecutionListener, DependencyInjectionTestExecutionListener, DirtiesContextTestExecutionListener, CommonCachesTestExecutionListener, TransactionalTestExecutionListener, SqlScriptsTestExecutionListener, EventPublishingTestExecutionListener, MockMvcPrintOnlyOnFailureTestExecutionListener, WebDriverTestExecutionListener, MockitoResetTestExecutionListener]
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.0)
+
+2026-07-05T14:56:37.986-05:00  INFO 56276 --- [spring-boot-citasSalud] [    Test worker] c.c.i.CitaJpaRepositoryAdapterIT         : Starting CitaJpaRepositoryAdapterIT using Java 25.0.3 with PID 56276 (started by Juan Pablo in C:\Users\Juan Pablo\Documents\MaestriaSoft\agente-citasSalud\spring-boot-citasSalud)
+2026-07-05T14:56:37.986-05:00  INFO 56276 --- [spring-boot-citasSalud] [    Test worker] c.c.i.CitaJpaRepositoryAdapterIT         : No active profile set, falling back to 1 default profile: "default"
+2026-07-05T14:56:37.986-05:00 DEBUG 56276 --- [spring-boot-citasSalud] [    Test worker] o.s.boot.SpringApplication               : Loading source class com.citassalud.SpringBootCitasSaludApplication
+2026-07-05T14:56:38.106-05:00  INFO 56276 --- [spring-boot-citasSalud] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-05T14:56:38.118-05:00 DEBUG 56276 --- [spring-boot-citasSalud] [    Test worker] o.s.b.a.AutoConfigurationPackages        : @EnableAutoConfiguration was declared on a class in the package 'com.citassalud'. Automatic @Repository and @Entity scanning is enabled.
+2026-07-05T14:56:38.143-05:00  INFO 56276 --- [spring-boot-citasSalud] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 28 ms. Found 1 JPA repository interface.
+2026-07-05T14:56:38.175-05:00  INFO 56276 --- [spring-boot-citasSalud] [    Test worker] beddedDataSourceBeanFactoryPostProcessor : Replacing 'dataSource' DataSource bean with embedded version
+2026-07-05T14:56:38.209-05:00  INFO 56276 --- [spring-boot-citasSalud] [    Test worker] o.s.j.d.e.EmbeddedDatabaseFactory        : Starting embedded database: url='jdbc:h2:mem:90c46e31-5089-4e28-8ecc-3e10fc61ce2e;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2026-07-05T14:56:38.512-05:00  INFO 56276 --- [spring-boot-citasSalud] [    Test worker] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-07-05T14:56:38.580-05:00  INFO 56276 --- [spring-boot-citasSalud] [    Test worker] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.1.Final
+2026-07-05T14:56:38.857-05:00  INFO 56276 --- [spring-boot-citasSalud] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-05T14:56:38.943-05:00  INFO 56276 --- [spring-boot-citasSalud] [    Test worker] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:mem:90c46e31-5089-4e28-8ecc-3e10fc61ce2e]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: 90C46E31-5089-4E28-8ECC-3E10FC61CE2E/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-07-05T14:56:39.733-05:00  INFO 56276 --- [spring-boot-citasSalud] [    Test worker] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-07-05T14:56:39.754-05:00 DEBUG 56276 --- [spring-boot-citasSalud] [    Test worker] org.hibernate.SQL                        : drop table if exists cita cascade 
+Hibernate: drop table if exists cita cascade 
+2026-07-05T14:56:39.760-05:00 DEBUG 56276 --- [spring-boot-citasSalud] [    Test worker] org.hibernate.SQL                        : create table cita (fecha_hora timestamp(6) with time zone not null, recordatorio_enviado_en timestamp(6) with time zone, id uuid not null, medico_id uuid not null, paciente_id uuid not null, medico_nombre varchar(255) not null, paciente_nombre varchar(255) not null, paciente_numero_whatsapp varchar(255), ultimo_mensaje_whatsapp_id varchar(255), estado enum ('AGENDADA','CANCELADA','COMPLETADA','RECORDATORIO_ENVIADO') not null, primary key (id))
+Hibernate: create table cita (fecha_hora timestamp(6) with time zone not null, recordatorio_enviado_en timestamp(6) with time zone, id uuid not null, medico_id uuid not null, paciente_id uuid not null, medico_nombre varchar(255) not null, paciente_nombre varchar(255) not null, paciente_numero_whatsapp varchar(255), ultimo_mensaje_whatsapp_id varchar(255), estado enum ('AGENDADA','CANCELADA','COMPLETADA','RECORDATORIO_ENVIADO') not null, primary key (id))
+2026-07-05T14:56:39.771-05:00  INFO 56276 --- [spring-boot-citasSalud] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-05T14:56:39.821-05:00  INFO 56276 --- [spring-boot-citasSalud] [    Test worker] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-07-05T14:56:39.978-05:00 DEBUG 56276 --- [spring-boot-citasSalud] [    Test worker] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+
+============================
+CONDITIONS EVALUATION REPORT
+============================
+
+
+Positive matches:
+-----------------
+
+   DataJpaRepositoriesAutoConfiguration matched:
+      - @ConditionalOnClass found required class 'org.springframework.data.jpa.repository.JpaRepository' (OnClassCondition)
+      - @ConditionalOnBooleanProperty (spring.data.jpa.repositories.enabled=true) matched (OnPropertyCondition)
+      - @ConditionalOnBean (types: javax.sql.DataSource; SearchStrategy: all) found bean 'dataSource'; @ConditionalOnMissingBean (types: org.springframework.data.jpa.repository.support.JpaRepositoryFactoryBean,org.springframework.data.jpa.repository.config.JpaRepositoryConfigExtension; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   DataSourceAutoConfiguration matched:
+      - @ConditionalOnClass found required classes 'javax.sql.DataSource', 'org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType' (OnClassCondition)
+      - @ConditionalOnMissingBean (types: io.r2dbc.spi.ConnectionFactory; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   DataSourceAutoConfiguration.PooledDataSourceConfiguration matched:
+      - AnyNestedCondition 1 matched 1 did not; NestedCondition on DataSourceAutoConfiguration.PooledDataSourceCondition.PooledDataSourceAvailable PooledDataSource found supported DataSource; NestedCondition on DataSourceAutoConfiguration.PooledDataSourceCondition.ExplicitType @ConditionalOnProperty (spring.datasource.type) did not find property 'spring.datasource.type' (DataSourceAutoConfiguration.PooledDataSourceCondition)
+      - @ConditionalOnMissingBean (types: javax.sql.DataSource,javax.sql.XADataSource; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   DataSourceAutoConfiguration.PooledDataSourceConfiguration#jdbcConnectionDetails matched:
+      - @ConditionalOnMissingBean (types: org.springframework.boot.jdbc.autoconfigure.JdbcConnectionDetails; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   DataSourceConfiguration.Hikari matched:
+      - @ConditionalOnClass found required class 'com.zaxxer.hikari.HikariDataSource' (OnClassCondition)
+      - @ConditionalOnProperty (spring.datasource.type=com.zaxxer.hikari.HikariDataSource) matched (OnPropertyCondition)
+      - @ConditionalOnMissingBean (types: javax.sql.DataSource; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   DataSourceInitializationAutoConfiguration matched:
+      - @ConditionalOnClass found required class 'org.springframework.jdbc.datasource.init.DatabasePopulator' (OnClassCondition)
+      - SQL InitializationDatabase Initialization default value is EMBEDDED (OnSqlInitializationCondition)
+      - @ConditionalOnSingleCandidate (types: javax.sql.DataSource; SearchStrategy: all) found a single bean 'dataSource'; @ConditionalOnMissingBean (types: org.springframework.boot.sql.autoconfigure.init.ApplicationScriptDatabaseInitializer; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   DataSourcePoolMetadataProvidersConfiguration.HikariPoolDataSourceMetadataProviderConfiguration matched:
+      - @ConditionalOnClass found required class 'com.zaxxer.hikari.HikariDataSource' (OnClassCondition)
+
+   DataSourceTransactionManagerAutoConfiguration matched:
+      - @ConditionalOnClass found required classes 'javax.sql.DataSource', 'org.springframework.jdbc.core.JdbcTemplate', 'org.springframework.transaction.TransactionManager' (OnClassCondition)
+
+   DataSourceTransactionManagerAutoConfiguration.JdbcTransactionManagerConfiguration matched:
+      - @ConditionalOnSingleCandidate (types: javax.sql.DataSource; SearchStrategy: all) found a single bean 'dataSource' (OnBeanCondition)
+
+   HibernateJpaAutoConfiguration matched:
+      - @ConditionalOnClass found required classes 'org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean', 'jakarta.persistence.EntityManager', 'org.hibernate.engine.spi.SessionImplementor' (OnClassCondition)
+
+   HibernateJpaConfiguration matched:
+      - @ConditionalOnSingleCandidate (types: javax.sql.DataSource; SearchStrategy: all) found a single bean 'dataSource' (OnBeanCondition)
+
+   JdbcClientAutoConfiguration matched:
+      - @ConditionalOnSingleCandidate (types: org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate; SearchStrategy: all) found a single bean 'namedParameterJdbcTemplate'; @ConditionalOnMissingBean (types: org.springframework.jdbc.core.simple.JdbcClient; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   JdbcTemplateAutoConfiguration matched:
+      - @ConditionalOnClass found required classes 'javax.sql.DataSource', 'org.springframework.jdbc.core.JdbcTemplate' (OnClassCondition)
+      - @ConditionalOnSingleCandidate (types: javax.sql.DataSource; SearchStrategy: all) found a single bean 'dataSource' (OnBeanCondition)
+
+   JdbcTemplateConfiguration matched:
+      - @ConditionalOnMissingBean (types: org.springframework.jdbc.core.JdbcOperations; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   JpaBaseConfiguration#entityManagerFactory matched:
+      - @ConditionalOnMissingBean (types: org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean,jakarta.persistence.EntityManagerFactory; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   JpaBaseConfiguration#entityManagerFactoryBuilder matched:
+      - @ConditionalOnMissingBean (types: org.springframework.boot.jpa.EntityManagerFactoryBuilder; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   JpaBaseConfiguration#jpaVendorAdapter matched:
+      - @ConditionalOnMissingBean (types: org.springframework.orm.jpa.JpaVendorAdapter; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   JpaBaseConfiguration#transactionManager matched:
+      - @ConditionalOnMissingBean (types: org.springframework.transaction.TransactionManager; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   JpaBaseConfiguration.PersistenceManagedTypesConfiguration matched:
+      - @ConditionalOnMissingBean (types: org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean,jakarta.persistence.EntityManagerFactory; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   JpaBaseConfiguration.PersistenceManagedTypesConfiguration#persistenceManagedTypes matched:
+      - @ConditionalOnMissingBean (types: org.springframework.orm.jpa.persistenceunit.PersistenceManagedTypes; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   NamedParameterJdbcTemplateConfiguration matched:
+      - @ConditionalOnSingleCandidate (types: org.springframework.jdbc.core.JdbcTemplate; SearchStrategy: all) found a single bean 'jdbcTemplate'; @ConditionalOnMissingBean (types: org.springframework.jdbc.core.namedparam.NamedParameterJdbcOperations; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   TestDatabaseAutoConfiguration#nonTestEmbeddedDataSourceBeanFactoryPostProcessor matched:
+      - @ConditionalOnProperty (spring.test.database.replace=NON_TEST) matched (OnPropertyCondition)
+
+   TestEntityManagerAutoConfiguration matched:
+      - @ConditionalOnClass found required class 'jakarta.persistence.EntityManagerFactory' (OnClassCondition)
+
+   TestEntityManagerAutoConfiguration#testEntityManager matched:
+      - @ConditionalOnMissingBean (types: org.springframework.boot.jpa.test.autoconfigure.TestEntityManager; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   TransactionAutoConfiguration matched:
+      - @ConditionalOnClass found required class 'org.springframework.transaction.PlatformTransactionManager' (OnClassCondition)
+
+   TransactionAutoConfiguration.EnableTransactionManagementConfiguration matched:
+      - @ConditionalOnBean (types: org.springframework.transaction.TransactionManager; SearchStrategy: all) found bean 'transactionManager'; @ConditionalOnMissingBean (types: org.springframework.transaction.annotation.AbstractTransactionManagementConfiguration; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   TransactionAutoConfiguration.EnableTransactionManagementConfiguration.CglibAutoProxyConfiguration matched:
+      - @ConditionalOnBooleanProperty (spring.aop.proxy-target-class=true) matched (OnPropertyCondition)
+
+   TransactionAutoConfiguration.TransactionTemplateConfiguration matched:
+      - @ConditionalOnSingleCandidate (types: org.springframework.transaction.PlatformTransactionManager; SearchStrategy: all) found a single bean 'transactionManager' (OnBeanCondition)
+
+   TransactionAutoConfiguration.TransactionTemplateConfiguration#transactionTemplate matched:
+      - @ConditionalOnMissingBean (types: org.springframework.transaction.support.TransactionOperations; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   TransactionManagerCustomizationAutoConfiguration matched:
+      - @ConditionalOnClass found required class 'org.springframework.transaction.PlatformTransactionManager' (OnClassCondition)
+
+   TransactionManagerCustomizationAutoConfiguration#platformTransactionManagerCustomizers matched:
+      - @ConditionalOnMissingBean (types: org.springframework.boot.transaction.autoconfigure.TransactionManagerCustomizers; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+
+Negative matches:
+-----------------
+
+   DataJpaRepositoriesAutoConfiguration#entityManagerFactoryBootstrapExecutorCustomizer:
+      Did not match:
+         - @ConditionalOnProperty (spring.data.jpa.repositories.bootstrap-mode=deferred) found different value in property 'spring.data.jpa.repositories.bootstrap-mode' (OnPropertyCondition)
+
+   DataSourceAutoConfiguration.EmbeddedDatabaseConfiguration:
+      Did not match:
+         - EmbeddedDataSource found supported pooled data source (DataSourceAutoConfiguration.EmbeddedDatabaseCondition)
+
+   DataSourceCheckpointRestoreConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.crac.Resource' (OnClassCondition)
+
+   DataSourceConfiguration.Dbcp2:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.apache.commons.dbcp2.BasicDataSource' (OnClassCondition)
+
+   DataSourceConfiguration.Generic:
+      Did not match:
+         - @ConditionalOnProperty (spring.datasource.type) did not find property 'spring.datasource.type' (OnPropertyCondition)
+
+   DataSourceConfiguration.OracleUcp:
+      Did not match:
+         - @ConditionalOnClass did not find required classes 'oracle.ucp.jdbc.PoolDataSourceImpl', 'oracle.jdbc.OracleConnection' (OnClassCondition)
+
+   DataSourceConfiguration.Tomcat:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.apache.tomcat.jdbc.pool.DataSource' (OnClassCondition)
+
+   DataSourceJmxConfiguration:
+      Did not match:
+         - @ConditionalOnBooleanProperty (spring.jmx.enabled=true) found different value in property 'spring.jmx.enabled' (OnPropertyCondition)
+
+   DataSourcePoolMetadataProvidersConfiguration.CommonsDbcp2PoolDataSourceMetadataProviderConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.apache.commons.dbcp2.BasicDataSource' (OnClassCondition)
+
+   DataSourcePoolMetadataProvidersConfiguration.OracleUcpPoolDataSourceMetadataProviderConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required classes 'oracle.ucp.jdbc.PoolDataSource', 'oracle.jdbc.OracleConnection' (OnClassCondition)
+
+   DataSourcePoolMetadataProvidersConfiguration.TomcatDataSourcePoolMetadataProviderConfiguration:
+      Did not match:
+         - @ConditionalOnClass did not find required class 'org.apache.tomcat.jdbc.pool.DataSource' (OnClassCondition)
+
+   DataSourceTransactionManagerAutoConfiguration.JdbcTransactionManagerConfiguration#transactionManager:
+      Did not match:
+         - @ConditionalOnMissingBean (types: org.springframework.transaction.TransactionManager; SearchStrategy: all) found beans of type 'org.springframework.transaction.TransactionManager' transactionManager (OnBeanCondition)
+
+   JpaBaseConfiguration.JpaWebConfiguration:
+      Did not match:
+         - not a servlet web application (OnWebApplicationCondition)
+      Matched:
+         - @ConditionalOnClass found required class 'org.springframework.web.servlet.config.annotation.WebMvcConfigurer' (OnClassCondition)
+
+   LazyConnectionDataSourceConfiguration:
+      Did not match:
+         - @ConditionalOnProperty (spring.datasource.connection-fetch=lazy) did not find property 'spring.datasource.connection-fetch' (OnPropertyCondition)
+
+   TestDatabaseAutoConfiguration#dataSource:
+      Did not match:
+         - @ConditionalOnProperty (spring.test.database.replace=AUTO_CONFIGURED) did not find property 'spring.test.database.replace' (OnPropertyCondition)
+
+   TestDatabaseAutoConfiguration#embeddedDataSourceBeanFactoryPostProcessor:
+      Did not match:
+         - @ConditionalOnProperty (spring.test.database.replace=ANY) did not find property 'spring.test.database.replace' (OnPropertyCondition)
+
+   TransactionAutoConfiguration#transactionalOperator:
+      Did not match:
+         - @ConditionalOnSingleCandidate (types: org.springframework.transaction.ReactiveTransactionManager; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   TransactionAutoConfiguration.AspectJTransactionManagementConfiguration:
+      Did not match:
+         - @ConditionalOnBean (types: org.springframework.transaction.aspectj.AbstractTransactionAspect; SearchStrategy: all) did not find any beans of type org.springframework.transaction.aspectj.AbstractTransactionAspect (OnBeanCondition)
+
+   TransactionAutoConfiguration.EnableTransactionManagementConfiguration.JdkDynamicAutoProxyConfiguration:
+      Did not match:
+         - @ConditionalOnBooleanProperty (spring.aop.proxy-target-class=false) did not find property 'spring.aop.proxy-target-class' (OnPropertyCondition)
+
+
+Exclusions:
+-----------
+
+    None
+
+
+Unconditional classes:
+----------------------
+
+    org.springframework.boot.jdbc.test.autoconfigure.TestDatabaseAutoConfiguration
+
+
+
+2026-07-05T14:56:39.980-05:00  INFO 56276 --- [spring-boot-citasSalud] [    Test worker] c.c.i.CitaJpaRepositoryAdapterIT         : Started CitaJpaRepositoryAdapterIT in 2.013 seconds (process running for 6.728)
+2026-07-05T14:56:40.018-05:00 DEBUG 56276 --- [spring-boot-citasSalud] [    Test worker] org.hibernate.SQL                        : select cje1_0.id,cje1_0.estado,cje1_0.fecha_hora,cje1_0.medico_id,cje1_0.medico_nombre,cje1_0.paciente_id,cje1_0.paciente_nombre,cje1_0.paciente_numero_whatsapp,cje1_0.recordatorio_enviado_en,cje1_0.ultimo_mensaje_whatsapp_id from cita cje1_0 where cje1_0.id=?
+Hibernate: select cje1_0.id,cje1_0.estado,cje1_0.fecha_hora,cje1_0.medico_id,cje1_0.medico_nombre,cje1_0.paciente_id,cje1_0.paciente_nombre,cje1_0.paciente_numero_whatsapp,cje1_0.recordatorio_enviado_en,cje1_0.ultimo_mensaje_whatsapp_id from cita cje1_0 where cje1_0.id=?
+2026-07-05T14:56:40.065-05:00 DEBUG 56276 --- [spring-boot-citasSalud] [    Test worker] org.hibernate.SQL                        : select cje1_0.id,cje1_0.estado,cje1_0.fecha_hora,cje1_0.medico_id,cje1_0.medico_nombre,cje1_0.paciente_id,cje1_0.paciente_nombre,cje1_0.paciente_numero_whatsapp,cje1_0.recordatorio_enviado_en,cje1_0.ultimo_mensaje_whatsapp_id from cita cje1_0 where cje1_0.id=?
+Hibernate: select cje1_0.id,cje1_0.estado,cje1_0.fecha_hora,cje1_0.medico_id,cje1_0.medico_nombre,cje1_0.paciente_id,cje1_0.paciente_nombre,cje1_0.paciente_numero_whatsapp,cje1_0.recordatorio_enviado_en,cje1_0.ultimo_mensaje_whatsapp_id from cita cje1_0 where cje1_0.id=?
+2026-07-05T14:56:40.371-05:00 DEBUG 56276 --- [spring-boot-citasSalud] [    Test worker] org.hibernate.SQL                        : insert into cita (estado,fecha_hora,medico_id,medico_nombre,paciente_id,paciente_nombre,paciente_numero_whatsapp,recordatorio_enviado_en,ultimo_mensaje_whatsapp_id,id) values (?,?,?,?,?,?,?,?,?,?)
+Hibernate: insert into cita (estado,fecha_hora,medico_id,medico_nombre,paciente_id,paciente_nombre,paciente_numero_whatsapp,recordatorio_enviado_en,ultimo_mensaje_whatsapp_id,id) values (?,?,?,?,?,?,?,?,?,?)
+2026-07-05T14:56:40.376-05:00 DEBUG 56276 --- [spring-boot-citasSalud] [    Test worker] org.hibernate.SQL                        : insert into cita (estado,fecha_hora,medico_id,medico_nombre,paciente_id,paciente_nombre,paciente_numero_whatsapp,recordatorio_enviado_en,ultimo_mensaje_whatsapp_id,id) values (?,?,?,?,?,?,?,?,?,?)
+Hibernate: insert into cita (estado,fecha_hora,medico_id,medico_nombre,paciente_id,paciente_nombre,paciente_numero_whatsapp,recordatorio_enviado_en,ultimo_mensaje_whatsapp_id,id) values (?,?,?,?,?,?,?,?,?,?)
+2026-07-05T14:56:40.378-05:00 DEBUG 56276 --- [spring-boot-citasSalud] [    Test worker] org.hibernate.SQL                        : select cje1_0.id,cje1_0.estado,cje1_0.fecha_hora,cje1_0.medico_id,cje1_0.medico_nombre,cje1_0.paciente_id,cje1_0.paciente_nombre,cje1_0.paciente_numero_whatsapp,cje1_0.recordatorio_enviado_en,cje1_0.ultimo_mensaje_whatsapp_id from cita cje1_0 where cje1_0.estado=? and cje1_0.fecha_hora between ? and ?
+Hibernate: select cje1_0.id,cje1_0.estado,cje1_0.fecha_hora,cje1_0.medico_id,cje1_0.medico_nombre,cje1_0.paciente_id,cje1_0.paciente_nombre,cje1_0.paciente_numero_whatsapp,cje1_0.recordatorio_enviado_en,cje1_0.ultimo_mensaje_whatsapp_id from cita cje1_0 where cje1_0.estado=? and cje1_0.fecha_hora between ? and ?
+2026-07-05T14:56:40.389-05:00 DEBUG 56276 --- [spring-boot-citasSalud] [    Test worker] org.hibernate.SQL                        : select cje1_0.id,cje1_0.estado,cje1_0.fecha_hora,cje1_0.medico_id,cje1_0.medico_nombre,cje1_0.paciente_id,cje1_0.paciente_nombre,cje1_0.paciente_numero_whatsapp,cje1_0.recordatorio_enviado_en,cje1_0.ultimo_mensaje_whatsapp_id from cita cje1_0 where cje1_0.id=?
+Hibernate: select cje1_0.id,cje1_0.estado,cje1_0.fecha_hora,cje1_0.medico_id,cje1_0.medico_nombre,cje1_0.paciente_id,cje1_0.paciente_nombre,cje1_0.paciente_numero_whatsapp,cje1_0.recordatorio_enviado_en,cje1_0.ultimo_mensaje_whatsapp_id from cita cje1_0 where cje1_0.id=?
+2026-07-05T14:56:40.400-05:00 DEBUG 56276 --- [spring-boot-citasSalud] [    Test worker] org.hibernate.SQL                        : select cje1_0.id,cje1_0.estado,cje1_0.fecha_hora,cje1_0.medico_id,cje1_0.medico_nombre,cje1_0.paciente_id,cje1_0.paciente_nombre,cje1_0.paciente_numero_whatsapp,cje1_0.recordatorio_enviado_en,cje1_0.ultimo_mensaje_whatsapp_id from cita cje1_0 where cje1_0.id=?
+Hibernate: select cje1_0.id,cje1_0.estado,cje1_0.fecha_hora,cje1_0.medico_id,cje1_0.medico_nombre,cje1_0.paciente_id,cje1_0.paciente_nombre,cje1_0.paciente_numero_whatsapp,cje1_0.recordatorio_enviado_en,cje1_0.ultimo_mensaje_whatsapp_id from cita cje1_0 where cje1_0.id=?
+2026-07-05T14:56:40.401-05:00 DEBUG 56276 --- [spring-boot-citasSalud] [    Test worker] org.hibernate.SQL                        : select cje1_0.id,cje1_0.estado,cje1_0.fecha_hora,cje1_0.medico_id,cje1_0.medico_nombre,cje1_0.paciente_id,cje1_0.paciente_nombre,cje1_0.paciente_numero_whatsapp,cje1_0.recordatorio_enviado_en,cje1_0.ultimo_mensaje_whatsapp_id from cita cje1_0 where cje1_0.id=?
+Hibernate: select cje1_0.id,cje1_0.estado,cje1_0.fecha_hora,cje1_0.medico_id,cje1_0.medico_nombre,cje1_0.paciente_id,cje1_0.paciente_nombre,cje1_0.paciente_numero_whatsapp,cje1_0.recordatorio_enviado_en,cje1_0.ultimo_mensaje_whatsapp_id from cita cje1_0 where cje1_0.id=?
+2026-07-05T14:56:40.404-05:00 DEBUG 56276 --- [spring-boot-citasSalud] [    Test worker] org.hibernate.SQL                        : insert into cita (estado,fecha_hora,medico_id,medico_nombre,paciente_id,paciente_nombre,paciente_numero_whatsapp,recordatorio_enviado_en,ultimo_mensaje_whatsapp_id,id) values (?,?,?,?,?,?,?,?,?,?)
+Hibernate: insert into cita (estado,fecha_hora,medico_id,medico_nombre,paciente_id,paciente_nombre,paciente_numero_whatsapp,recordatorio_enviado_en,ultimo_mensaje_whatsapp_id,id) values (?,?,?,?,?,?,?,?,?,?)
+2026-07-05T14:56:40.404-05:00 DEBUG 56276 --- [spring-boot-citasSalud] [    Test worker] org.hibernate.SQL                        : insert into cita (estado,fecha_hora,medico_id,medico_nombre,paciente_id,paciente_nombre,paciente_numero_whatsapp,recordatorio_enviado_en,ultimo_mensaje_whatsapp_id,id) values (?,?,?,?,?,?,?,?,?,?)
+Hibernate: insert into cita (estado,fecha_hora,medico_id,medico_nombre,paciente_id,paciente_nombre,paciente_numero_whatsapp,recordatorio_enviado_en,ultimo_mensaje_whatsapp_id,id) values (?,?,?,?,?,?,?,?,?,?)
+2026-07-05T14:56:40.405-05:00 DEBUG 56276 --- [spring-boot-citasSalud] [    Test worker] org.hibernate.SQL                        : select cje1_0.id,cje1_0.estado,cje1_0.fecha_hora,cje1_0.medico_id,cje1_0.medico_nombre,cje1_0.paciente_id,cje1_0.paciente_nombre,cje1_0.paciente_numero_whatsapp,cje1_0.recordatorio_enviado_en,cje1_0.ultimo_mensaje_whatsapp_id from cita cje1_0 where cje1_0.estado=? and cje1_0.fecha_hora between ? and ?
+Hibernate: select cje1_0.id,cje1_0.estado,cje1_0.fecha_hora,cje1_0.medico_id,cje1_0.medico_nombre,cje1_0.paciente_id,cje1_0.paciente_nombre,cje1_0.paciente_numero_whatsapp,cje1_0.recordatorio_enviado_en,cje1_0.ultimo_mensaje_whatsapp_id from cita cje1_0 where cje1_0.estado=? and cje1_0.fecha_hora between ? and ?
+2026-07-05T14:56:40.410-05:00 DEBUG 56276 --- [spring-boot-citasSalud] [    Test worker] org.hibernate.SQL                        : select cje1_0.id,cje1_0.estado,cje1_0.fecha_hora,cje1_0.medico_id,cje1_0.medico_nombre,cje1_0.paciente_id,cje1_0.paciente_nombre,cje1_0.paciente_numero_whatsapp,cje1_0.recordatorio_enviado_en,cje1_0.ultimo_mensaje_whatsapp_id from cita cje1_0 where cje1_0.id=?
+Hibernate: select cje1_0.id,cje1_0.estado,cje1_0.fecha_hora,cje1_0.medico_id,cje1_0.medico_nombre,cje1_0.paciente_id,cje1_0.paciente_nombre,cje1_0.paciente_numero_whatsapp,cje1_0.recordatorio_enviado_en,cje1_0.ultimo_mensaje_whatsapp_id from cita cje1_0 where cje1_0.id=?
+2026-07-05T14:56:40.414-05:00 DEBUG 56276 --- [spring-boot-citasSalud] [    Test worker] org.hibernate.SQL                        : insert into cita (estado,fecha_hora,medico_id,medico_nombre,paciente_id,paciente_nombre,paciente_numero_whatsapp,recordatorio_enviado_en,ultimo_mensaje_whatsapp_id,id) values (?,?,?,?,?,?,?,?,?,?)
+Hibernate: insert into cita (estado,fecha_hora,medico_id,medico_nombre,paciente_id,paciente_nombre,paciente_numero_whatsapp,recordatorio_enviado_en,ultimo_mensaje_whatsapp_id,id) values (?,?,?,?,?,?,?,?,?,?)
+2026-07-05T14:56:40.414-05:00 DEBUG 56276 --- [spring-boot-citasSalud] [    Test worker] org.hibernate.SQL                        : select cje1_0.id,cje1_0.estado,cje1_0.fecha_hora,cje1_0.medico_id,cje1_0.medico_nombre,cje1_0.paciente_id,cje1_0.paciente_nombre,cje1_0.paciente_numero_whatsapp,cje1_0.recordatorio_enviado_en,cje1_0.ultimo_mensaje_whatsapp_id from cita cje1_0 where cje1_0.ultimo_mensaje_whatsapp_id=?
+Hibernate: select cje1_0.id,cje1_0.estado,cje1_0.fecha_hora,cje1_0.medico_id,cje1_0.medico_nombre,cje1_0.paciente_id,cje1_0.paciente_nombre,cje1_0.paciente_numero_whatsapp,cje1_0.recordatorio_enviado_en,cje1_0.ultimo_mensaje_whatsapp_id from cita cje1_0 where cje1_0.ultimo_mensaje_whatsapp_id=?
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

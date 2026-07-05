@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CancelarCitaUseCase.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">spring-boot-citasSalud</a> &gt; <a href="index.source.html" class="el_package">com.citassalud.application.usecase</a> &gt; <span class="el_source">CancelarCitaUseCase.java</span></div><h1>CancelarCitaUseCase.java</h1><pre class="source lang-java linenums">package com.citassalud.application.usecase;
+
+import com.citassalud.application.port.CitaRepositoryPort;
+import com.citassalud.application.port.WhatsAppGatewayPort;
+import com.citassalud.domain.cita.Cita;
+import com.citassalud.domain.cita.VentanaCancelacionPolicy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.time.Instant;
+import java.util.Optional;
+import java.util.function.Supplier;
+
+/**
+ * FR-003/FR-003a/FR-004/FR-005/FR-008/FR-009: procesa la respuesta entrante de WhatsApp
+ * a un recordatorio, resolviendo la Cita por el hilo específico y aplicando la ventana
+ * mínima de cancelación.
+ */
+public class CancelarCitaUseCase {
+
+<span class="fc" id="L21">    private static final Logger LOG = LoggerFactory.getLogger(CancelarCitaUseCase.class);</span>
+    private static final String PALABRA_CLAVE_CANCELACION = &quot;CANCELAR&quot;;
+
+    private final CitaRepositoryPort citaRepositoryPort;
+    private final WhatsAppGatewayPort whatsAppGatewayPort;
+    private final VentanaCancelacionPolicy ventanaCancelacionPolicy;
+    private final Supplier&lt;Instant&gt; reloj;
+
+    public CancelarCitaUseCase(CitaRepositoryPort citaRepositoryPort, WhatsAppGatewayPort whatsAppGatewayPort,
+                                VentanaCancelacionPolicy ventanaCancelacionPolicy) {
+<span class="fc" id="L31">        this(citaRepositoryPort, whatsAppGatewayPort, ventanaCancelacionPolicy, Instant::now);</span>
+<span class="fc" id="L32">    }</span>
+
+    CancelarCitaUseCase(CitaRepositoryPort citaRepositoryPort, WhatsAppGatewayPort whatsAppGatewayPort,
+<span class="fc" id="L35">                         VentanaCancelacionPolicy ventanaCancelacionPolicy, Supplier&lt;Instant&gt; reloj) {</span>
+<span class="fc" id="L36">        this.citaRepositoryPort = citaRepositoryPort;</span>
+<span class="fc" id="L37">        this.whatsAppGatewayPort = whatsAppGatewayPort;</span>
+<span class="fc" id="L38">        this.ventanaCancelacionPolicy = ventanaCancelacionPolicy;</span>
+<span class="fc" id="L39">        this.reloj = reloj;</span>
+<span class="fc" id="L40">    }</span>
+
+    /**
+     * FR-009: la cita se resuelve exclusivamente por el hilo del recordatorio
+     * ({@code mensajeProveedorIdOrigen}), nunca por búsqueda ambigua entre citas del paciente.
+     */
+    public ResultadoCancelacion procesarRespuesta(String mensajeProveedorIdOrigen, String textoRespuesta) {
+<span class="fc" id="L47">        Optional&lt;Cita&gt; citaOpt = citaRepositoryPort.buscarPorMensajeWhatsappId(mensajeProveedorIdOrigen);</span>
+<span class="fc bfc" id="L48" title="All 2 branches covered.">        if (citaOpt.isEmpty()) {</span>
+<span class="fc" id="L49">            LOG.warn(&quot;No se encontró una cita asociada al hilo de WhatsApp {}&quot;, mensajeProveedorIdOrigen);</span>
+<span class="fc" id="L50">            return ResultadoCancelacion.HILO_NO_ENCONTRADO;</span>
+        }
+<span class="fc" id="L52">        Cita cita = citaOpt.get();</span>
+
+<span class="fc bfc" id="L54" title="All 2 branches covered.">        if (!esPalabraClaveCancelacion(textoRespuesta)) {</span>
+<span class="fc" id="L55">            whatsAppGatewayPort.enviarAclaracion(cita.getPaciente());</span>
+<span class="fc" id="L56">            return ResultadoCancelacion.NO_RECONOCIDA;</span>
+        }
+
+<span class="fc bfc" id="L59" title="All 2 branches covered.">        if (!ventanaCancelacionPolicy.permiteCancelacion(cita, reloj.get())) {</span>
+<span class="fc" id="L60">            whatsAppGatewayPort.enviarRechazoPorVentanaVencida(cita.getPaciente());</span>
+<span class="fc" id="L61">            return ResultadoCancelacion.FUERA_DE_VENTANA;</span>
+        }
+
+<span class="fc" id="L64">        cita.cancelar();</span>
+<span class="fc" id="L65">        citaRepositoryPort.guardar(cita);</span>
+<span class="fc" id="L66">        whatsAppGatewayPort.enviarConfirmacionCancelacion(cita.getPaciente(), cita);</span>
+<span class="fc" id="L67">        return ResultadoCancelacion.CANCELADA;</span>
+    }
+
+    private boolean esPalabraClaveCancelacion(String texto) {
+<span class="pc bpc" id="L71" title="1 of 4 branches missed.">        return texto != null &amp;&amp; texto.trim().equalsIgnoreCase(PALABRA_CLAVE_CANCELACION);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span></div></body></html>

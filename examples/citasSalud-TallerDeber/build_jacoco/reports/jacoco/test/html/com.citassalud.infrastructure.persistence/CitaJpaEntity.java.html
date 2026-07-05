@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CitaJpaEntity.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">spring-boot-citasSalud</a> &gt; <a href="index.source.html" class="el_package">com.citassalud.infrastructure.persistence</a> &gt; <span class="el_source">CitaJpaEntity.java</span></div><h1>CitaJpaEntity.java</h1><pre class="source lang-java linenums">package com.citassalud.infrastructure.persistence;
+
+import com.citassalud.domain.cita.Cita;
+import com.citassalud.domain.cita.EstadoCita;
+import com.citassalud.domain.medico.Medico;
+import com.citassalud.domain.paciente.Paciente;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+import java.time.Instant;
+import java.util.UUID;
+
+@Entity
+@Table(name = &quot;cita&quot;)
+public class CitaJpaEntity {
+
+    @Id
+    private UUID id;
+
+    @Column(name = &quot;paciente_id&quot;, nullable = false)
+    private UUID pacienteId;
+
+    @Column(name = &quot;paciente_nombre&quot;, nullable = false)
+    private String pacienteNombre;
+
+    @Column(name = &quot;paciente_numero_whatsapp&quot;)
+    private String pacienteNumeroWhatsapp;
+
+    @Column(name = &quot;medico_id&quot;, nullable = false)
+    private UUID medicoId;
+
+    @Column(name = &quot;medico_nombre&quot;, nullable = false)
+    private String medicoNombre;
+
+    @Column(name = &quot;fecha_hora&quot;, nullable = false)
+    private Instant fechaHora;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = &quot;estado&quot;, nullable = false)
+    private EstadoCita estado;
+
+    @Column(name = &quot;recordatorio_enviado_en&quot;)
+    private Instant recordatorioEnviadoEn;
+
+    @Column(name = &quot;ultimo_mensaje_whatsapp_id&quot;)
+    private String ultimoMensajeWhatsappId;
+
+<span class="fc" id="L52">    protected CitaJpaEntity() {</span>
+        // requerido por JPA
+<span class="fc" id="L54">    }</span>
+
+    public static CitaJpaEntity desdeDominio(Cita cita) {
+<span class="fc" id="L57">        CitaJpaEntity entity = new CitaJpaEntity();</span>
+<span class="fc" id="L58">        entity.id = cita.getId();</span>
+<span class="fc" id="L59">        entity.pacienteId = cita.getPaciente().getId();</span>
+<span class="fc" id="L60">        entity.pacienteNombre = cita.getPaciente().getNombre();</span>
+<span class="fc" id="L61">        entity.pacienteNumeroWhatsapp = cita.getPaciente().getNumeroWhatsapp();</span>
+<span class="fc" id="L62">        entity.medicoId = cita.getMedico().getId();</span>
+<span class="fc" id="L63">        entity.medicoNombre = cita.getMedico().getNombre();</span>
+<span class="fc" id="L64">        entity.fechaHora = cita.getFechaHora();</span>
+<span class="fc" id="L65">        entity.estado = cita.getEstado();</span>
+<span class="fc" id="L66">        entity.recordatorioEnviadoEn = cita.getRecordatorioEnviadoEn();</span>
+<span class="fc" id="L67">        entity.ultimoMensajeWhatsappId = cita.getUltimoMensajeWhatsappId();</span>
+<span class="fc" id="L68">        return entity;</span>
+    }
+
+    public Cita aDominio() {
+<span class="fc" id="L72">        Paciente paciente = new Paciente(pacienteId, pacienteNombre, pacienteNumeroWhatsapp);</span>
+<span class="fc" id="L73">        Medico medico = new Medico(medicoId, medicoNombre);</span>
+<span class="fc" id="L74">        return new Cita(id, paciente, medico, fechaHora, estado, recordatorioEnviadoEn, ultimoMensajeWhatsappId);</span>
+    }
+
+    public UUID getId() {
+<span class="nc" id="L78">        return id;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span></div></body></html>

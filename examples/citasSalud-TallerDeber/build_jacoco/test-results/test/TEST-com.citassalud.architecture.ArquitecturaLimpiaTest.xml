@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.citassalud.architecture.ArquitecturaLimpiaTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-07-05T19:56:34.430Z" hostname="JUANPABLOAY" time="0.949">
+  <properties/>
+  <testcase name="elDominioNoDependeDeFrameworksNiDeCapasExternas()" classname="com.citassalud.architecture.ArquitecturaLimpiaTest" time="0.698"/>
+  <testcase name="laAplicacionNoDependeDeInfraestructuraNiDeInterfaces()" classname="com.citassalud.architecture.ArquitecturaLimpiaTest" time="0.242"/>
+  <system-out><![CDATA[14:56:34.455 [Test worker] INFO com.tngtech.archunit.core.PluginLoader -- Detected Java version 25.0.3
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
