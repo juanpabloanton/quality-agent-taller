@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>WhatsAppWebhookController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">spring-boot-citasSalud</a> &gt; <a href="index.source.html" class="el_package">com.citassalud.interfaces.web</a> &gt; <span class="el_source">WhatsAppWebhookController.java</span></div><h1>WhatsAppWebhookController.java</h1><pre class="source lang-java linenums">package com.citassalud.interfaces.web;
+
+import com.citassalud.application.usecase.CancelarCitaUseCase;
+import com.citassalud.interfaces.web.generated.api.DefaultApi;
+import com.citassalud.interfaces.web.generated.model.WebhookAck;
+import com.citassalud.interfaces.web.generated.model.WhatsAppEntry;
+import com.citassalud.interfaces.web.generated.model.WhatsAppInboundMessage;
+import com.citassalud.interfaces.web.generated.model.WhatsAppWebhookEvent;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.util.List;
+import java.util.Optional;
+
+@RestController
+@RequestMapping(&quot;/api/v1/whatsapp&quot;)
+public class WhatsAppWebhookController implements DefaultApi {
+
+    private final CancelarCitaUseCase cancelarCitaUseCase;
+    private final String tokenVerificacionWebhook;
+
+    public WhatsAppWebhookController(CancelarCitaUseCase cancelarCitaUseCase,
+<span class="fc" id="L28">                                      @Value(&quot;${whatsapp.webhook.token-verificacion}&quot;) String tokenVerificacionWebhook) {</span>
+<span class="fc" id="L29">        this.cancelarCitaUseCase = cancelarCitaUseCase;</span>
+<span class="fc" id="L30">        this.tokenVerificacionWebhook = tokenVerificacionWebhook;</span>
+<span class="fc" id="L31">    }</span>
+
+    @Override
+    public ResponseEntity&lt;String&gt; verificarWebhook(String hubMode, String hubVerifyToken, String hubChallenge) {
+<span class="pc bpc" id="L35" title="1 of 4 branches missed.">        if (&quot;subscribe&quot;.equals(hubMode) &amp;&amp; tokenCoincide(hubVerifyToken)) {</span>
+<span class="fc" id="L36">            return ResponseEntity.ok(hubChallenge);</span>
+        }
+<span class="fc" id="L38">        return ResponseEntity.status(HttpStatus.FORBIDDEN).build();</span>
+    }
+
+    private boolean tokenCoincide(String hubVerifyToken) {
+<span class="pc bpc" id="L42" title="1 of 2 branches missed.">        if (hubVerifyToken == null) {</span>
+<span class="nc" id="L43">            return false;</span>
+        }
+<span class="fc" id="L45">        return MessageDigest.isEqual(</span>
+<span class="fc" id="L46">                tokenVerificacionWebhook.getBytes(StandardCharsets.UTF_8),</span>
+<span class="fc" id="L47">                hubVerifyToken.getBytes(StandardCharsets.UTF_8));</span>
+    }
+
+    @Override
+    public ResponseEntity&lt;WebhookAck&gt; recibirMensajeWhatsapp(WhatsAppWebhookEvent evento) {
+<span class="fc" id="L52">        extraerMensajeEntrante(evento).ifPresent(mensaje -&gt; {</span>
+<span class="pc bpc" id="L53" title="1 of 2 branches missed.">            String mensajeOrigenId = mensaje.getContext() != null ? mensaje.getContext().getId() : null;</span>
+<span class="pc bpc" id="L54" title="1 of 2 branches missed.">            String texto = mensaje.getText() != null ? mensaje.getText().getBody() : null;</span>
+<span class="pc bpc" id="L55" title="1 of 2 branches missed.">            if (mensajeOrigenId != null) {</span>
+<span class="fc" id="L56">                cancelarCitaUseCase.procesarRespuesta(mensajeOrigenId, texto);</span>
+            }
+<span class="fc" id="L58">        });</span>
+<span class="fc" id="L59">        return ResponseEntity.ok(new WebhookAck().status(WebhookAck.StatusEnum.RECIBIDO));</span>
+    }
+
+    private Optional&lt;WhatsAppInboundMessage&gt; extraerMensajeEntrante(WhatsAppWebhookEvent evento) {
+<span class="fc" id="L63">        return Optional.ofNullable(evento.getEntry())</span>
+<span class="fc" id="L64">                .orElse(List.of())</span>
+<span class="fc" id="L65">                .stream()</span>
+<span class="fc" id="L66">                .map(WhatsAppEntry::getChanges)</span>
+<span class="pc bpc" id="L67" title="1 of 2 branches missed.">                .filter(cambios -&gt; cambios != null)</span>
+<span class="fc" id="L68">                .flatMap(List::stream)</span>
+<span class="fc" id="L69">                .map(cambio -&gt; cambio.getValue())</span>
+<span class="pc bpc" id="L70" title="2 of 4 branches missed.">                .filter(valor -&gt; valor != null &amp;&amp; valor.getMessages() != null)</span>
+<span class="fc" id="L71">                .flatMap(valor -&gt; valor.getMessages().stream())</span>
+<span class="fc" id="L72">                .findFirst();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span></div></body></html>

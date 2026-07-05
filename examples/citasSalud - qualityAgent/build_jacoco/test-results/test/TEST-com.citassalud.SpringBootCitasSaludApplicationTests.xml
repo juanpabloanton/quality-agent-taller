@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.citassalud.SpringBootCitasSaludApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-07-05T22:23:31.201Z" hostname="JUANPABLOAY" time="4.242">
+  <properties/>
+  <testcase name="contextLoads()" classname="com.citassalud.SpringBootCitasSaludApplicationTests" time="0.203"/>
+  <system-out><![CDATA[17:23:31.311 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.citassalud.SpringBootCitasSaludApplicationTests]: SpringBootCitasSaludApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+17:23:31.391 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.citassalud.SpringBootCitasSaludApplication for test class com.citassalud.SpringBootCitasSaludApplicationTests
+17:23:31.466 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.citassalud.SpringBootCitasSaludApplicationTests]: SpringBootCitasSaludApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+17:23:31.468 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.citassalud.SpringBootCitasSaludApplication for test class com.citassalud.SpringBootCitasSaludApplicationTests
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.0)
+
+2026-07-05T17:23:31.755-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] c.c.SpringBootCitasSaludApplicationTests : Starting SpringBootCitasSaludApplicationTests using Java 25.0.3 with PID 65268 (started by Juan Pablo in C:\Users\Juan Pablo\Documents\MaestriaSoft\agente-citasSalud\spring-boot-citasSalud)
+2026-07-05T17:23:31.756-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] c.c.SpringBootCitasSaludApplicationTests : No active profile set, falling back to 1 default profile: "default"
+2026-07-05T17:23:32.306-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-05T17:23:32.353-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 39 ms. Found 2 JPA repository interfaces.
+2026-07-05T17:23:32.686-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-07-05T17:23:32.894-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:84a031ee-6bfd-4a95-b5ef-fcef0ce36914 user=SA
+2026-07-05T17:23:32.896-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-07-05T17:23:32.926-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-07-05T17:23:32.989-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.1.Final
+2026-07-05T17:23:33.382-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-05T17:23:33.472-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:mem:84a031ee-6bfd-4a95-b5ef-fcef0ce36914]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: 84A031EE-6BFD-4A95-B5EF-FCEF0CE36914/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-07-05T17:23:34.371-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-07-05T17:23:34.405-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-05T17:23:34.464-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-07-05T17:23:34.835-05:00  WARN 65268 --- [spring-boot-citasSalud] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-05T17:23:34.876-05:00  WARN 65268 --- [spring-boot-citasSalud] [    Test worker] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: df822081-75c6-421c-b083-64ca9a199260
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-07-05T17:23:34.882-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-07-05T17:23:35.231-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] c.c.SpringBootCitasSaludApplicationTests : Started SpringBootCitasSaludApplicationTests in 3.71 seconds (process running for 5.238)
+]]></system-out>
+  <system-err><![CDATA[Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (C:\Users\Juan Pablo\.gradle\caches\modules-2\files-2.1\net.bytebuddy\byte-buddy-agent\1.18.10\9426d28828bdcdf42666bb7a68c468279ea78f59\byte-buddy-agent-1.18.10.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
+</testsuite>

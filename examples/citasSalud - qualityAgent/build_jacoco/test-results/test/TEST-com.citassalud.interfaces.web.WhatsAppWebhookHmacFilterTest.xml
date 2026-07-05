@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.citassalud.interfaces.web.WhatsAppWebhookHmacFilterTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-07-05T22:23:38.918Z" hostname="JUANPABLOAY" time="0.127">
+  <properties/>
+  <testcase name="dadoUnCuerpoFirmado_cuandoElFiltroLoReenvia_entoncesElInputStreamCumpleElContratoServlet()" classname="com.citassalud.interfaces.web.WhatsAppWebhookHmacFilterTest" time="0.127"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

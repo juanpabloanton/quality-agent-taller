@@ -67,8 +67,8 @@ que cada uno tenga una prueba. Esto cierra el bucle de SDD: el Quality Agent es 
 ## Para qué se usa el MCP (Semgrep)
 
 El **pilar de Seguridad** se apoya en un servidor **MCP real y oficial de Semgrep**
-(`semgrep-mcp`). El agente lo usa para **escanear el código Java/Spring y reunir las
-vulnerabilidades** (`semgrep_scan`, `security_check`), que luego pueblan el bloque
+(`semgrep mcp`, incluido en el CLI oficial). El agente lo usa para **escanear el código Java/Spring y reunir las
+vulnerabilidades** (`semgrep_scan`), que luego pueblan el bloque
 `security` de `verification.json`.
 
 > **El MCP reúne la evidencia; el gate decide sobre ella.** El veredicto pasa/bloquea
@@ -80,14 +80,14 @@ Configuración (en `.mcp.json`, project-scoped y versionable):
 
 ```json
 { "mcpServers": {
-    "semgrep": { "command": "uvx", "args": ["semgrep-mcp"],
+    "semgrep": { "command": "uvx", "args": ["--python", "3.13", "--with", "setuptools<81", "--from", "semgrep", "semgrep", "mcp"],
                  "env": { "SEMGREP_APP_TOKEN": "${SEMGREP_APP_TOKEN}" } } } }
 ```
 
 - Requiere `uv`/`uvx` (o Docker: `ghcr.io/semgrep/mcp -t stdio`).
-- `SEMGREP_APP_TOKEN` es **opcional** — sin token, Semgrep escanea con sus reglas
-  locales; con token, se conecta a la plataforma AppSec. Expórtalo en tu shell:
-  `export SEMGREP_APP_TOKEN=...` (no lo escribas en el archivo).
+- Esta configuración espera `SEMGREP_APP_TOKEN` para conectarse a la plataforma AppSec.
+  Defínelo como variable de entorno (no escribas el valor en el archivo). Para usar
+  solamente reglas locales, elimina el bloque `env` de `.mcp.json`.
 - Claude Code te pedirá **aprobar** el servidor del `.mcp.json` la primera vez.
 
 ## Cómo se usa con Claude Code

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.citassalud.integration.RecordatorioJpaRepositoryAdapterIT" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-07-05T22:23:37.593Z" hostname="JUANPABLOAY" time="0.189">
+  <properties/>
+  <testcase name="dadoUnRecordatorioSinNumeroValido_cuandoSeGuarda_entoncesQuedaPersistidoElEstadoDeFallo()" classname="com.citassalud.integration.RecordatorioJpaRepositoryAdapterIT" time="0.007"/>
+  <testcase name="dadoUnRecordatorioEnviado_cuandoSeGuarda_entoncesQuedaPersistidoParaAuditoria()" classname="com.citassalud.integration.RecordatorioJpaRepositoryAdapterIT" time="0.004"/>
+  <system-out><![CDATA[2026-07-05T17:23:37.595-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.citassalud.integration.RecordatorioJpaRepositoryAdapterIT]: RecordatorioJpaRepositoryAdapterIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-07-05T17:23:37.602-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.citassalud.SpringBootCitasSaludApplication for test class com.citassalud.integration.RecordatorioJpaRepositoryAdapterIT
+2026-07-05T17:23:37.602-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.citassalud.integration.RecordatorioJpaRepositoryAdapterIT]: RecordatorioJpaRepositoryAdapterIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-07-05T17:23:37.608-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.citassalud.SpringBootCitasSaludApplication for test class com.citassalud.integration.RecordatorioJpaRepositoryAdapterIT
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.0)
+
+2026-07-05T17:23:37.628-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] c.c.i.RecordatorioJpaRepositoryAdapterIT : Starting RecordatorioJpaRepositoryAdapterIT using Java 25.0.3 with PID 65268 (started by Juan Pablo in C:\Users\Juan Pablo\Documents\MaestriaSoft\agente-citasSalud\spring-boot-citasSalud)
+2026-07-05T17:23:37.628-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] c.c.i.RecordatorioJpaRepositoryAdapterIT : No active profile set, falling back to 1 default profile: "default"
+2026-07-05T17:23:37.676-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-05T17:23:37.687-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 10 ms. Found 2 JPA repository interfaces.
+2026-07-05T17:23:37.693-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] beddedDataSourceBeanFactoryPostProcessor : Replacing 'dataSource' DataSource bean with embedded version
+2026-07-05T17:23:37.697-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] o.s.j.d.e.EmbeddedDatabaseFactory        : Starting embedded database: url='jdbc:h2:mem:fca8fd7b-2dcd-47af-a741-a16f8cacde72;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2026-07-05T17:23:37.708-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-07-05T17:23:37.720-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-05T17:23:37.721-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:mem:fca8fd7b-2dcd-47af-a741-a16f8cacde72]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: FCA8FD7B-2DCD-47AF-A741-A16F8CACDE72/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-07-05T17:23:37.747-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: drop table if exists cita cascade 
+Hibernate: drop table if exists recordatorio cascade 
+Hibernate: create table cita (fecha_hora timestamp(6) with time zone not null, recordatorio_enviado_en timestamp(6) with time zone, id uuid not null, medico_id uuid not null, paciente_id uuid not null, medico_nombre varchar(255) not null, paciente_nombre varchar(255) not null, paciente_numero_whatsapp varchar(255), ultimo_mensaje_whatsapp_id varchar(255), estado enum ('AGENDADA','CANCELADA','COMPLETADA','RECORDATORIO_ENVIADO') not null, primary key (id))
+Hibernate: create table recordatorio (intentos integer not null, enviado_en timestamp(6) with time zone, cita_id uuid not null, id uuid not null, canal varchar(255) not null, mensaje_proveedor_id varchar(255), estado_envio enum ('ENVIADO','FALLIDO','PENDIENTE','RESPONDIDO_CANCELACION','RESPONDIDO_NO_RECONOCIDO','SIN_NUMERO_VALIDO') not null, primary key (id))
+2026-07-05T17:23:37.751-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-05T17:23:37.769-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] c.c.i.RecordatorioJpaRepositoryAdapterIT : Started RecordatorioJpaRepositoryAdapterIT in 0.159 seconds (process running for 7.776)
+Hibernate: select rje1_0.id,rje1_0.canal,rje1_0.cita_id,rje1_0.enviado_en,rje1_0.estado_envio,rje1_0.intentos,rje1_0.mensaje_proveedor_id from recordatorio rje1_0 where rje1_0.id=?
+Hibernate: select rje1_0.id,rje1_0.canal,rje1_0.cita_id,rje1_0.enviado_en,rje1_0.estado_envio,rje1_0.intentos,rje1_0.mensaje_proveedor_id from recordatorio rje1_0 where rje1_0.id=?
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

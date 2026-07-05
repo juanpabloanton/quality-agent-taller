@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.citassalud.unit.CancelarCitaUseCaseTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-07-05T22:23:39.045Z" hostname="JUANPABLOAY" time="0.101">
+  <properties/>
+  <testcase name="dadoElPacienteRecibioElRecordatorio_cuandoRespondeCancelar_entoncesLaCitaQuedaAnuladaYSeConfirmaPorWhatsapp()" classname="com.citassalud.unit.CancelarCitaUseCaseTest" time="0.097"/>
+  <testcase name="dadaUnaCitaAMenosDe2HorasDelTurno_cuandoResponteCancelar_entoncesSeRechazaLaCancelacionYSeIndicaContactarAlCentro()" classname="com.citassalud.unit.CancelarCitaUseCaseTest" time="0.001"/>
+  <testcase name="dadoUnMensajeSinHiloAsociado_cuandoSeProcesa_entoncesNoSeModificaNadaYSeDevuelveHiloNoEncontrado()" classname="com.citassalud.unit.CancelarCitaUseCaseTest" time="0.001"/>
+  <testcase name="dadoUnPacienteConVariasCitasActivas_cuandoResponteEnUnHiloEspecifico_entoncesSoloSeCancelaLaCitaDeEseHilo()" classname="com.citassalud.unit.CancelarCitaUseCaseTest" time="0.0"/>
+  <testcase name="dadaUnaRespuestaNoReconocida_cuandoSeProcesa_entoncesLaCitaNoCambiaYSeReenviaLaAclaracion()" classname="com.citassalud.unit.CancelarCitaUseCaseTest" time="0.001"/>
+  <testcase name="dadaLaPalabraClaveConEspaciosYMinusculas_cuandoSeProcesa_entoncesSeReconoceLaCancelacion()" classname="com.citassalud.unit.CancelarCitaUseCaseTest" time="0.001"/>
+  <system-out><![CDATA[2026-07-05T17:23:39.145-05:00  WARN 65268 --- [spring-boot-citasSalud] [    Test worker] c.c.a.usecase.CancelarCitaUseCase        : No se encontró una cita asociada al hilo de WhatsApp wamid.desconocido
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

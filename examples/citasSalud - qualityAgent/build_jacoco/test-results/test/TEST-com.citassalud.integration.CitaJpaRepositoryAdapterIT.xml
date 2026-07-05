@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.citassalud.integration.CitaJpaRepositoryAdapterIT" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-07-05T22:23:37.200Z" hostname="JUANPABLOAY" time="0.392">
+  <properties/>
+  <testcase name="dadasCitasEnDistintasVentanas_cuandoSeBuscaLaVentanaDe24Horas_entoncesSoloDevuelveLasQueCaenDentro()" classname="com.citassalud.integration.CitaJpaRepositoryAdapterIT" time="0.074"/>
+  <testcase name="dadaUnaCitaAgendada_cuandoSeGuardaYSeBuscaPorId_entoncesSeRecuperaConLosMismosDatos()" classname="com.citassalud.integration.CitaJpaRepositoryAdapterIT" time="0.011"/>
+  <testcase name="dadaUnaCitaCanceladaDentroDeVentana_cuandoSeBuscaLaVentanaDe24Horas_entoncesNoSeDevuelve()" classname="com.citassalud.integration.CitaJpaRepositoryAdapterIT" time="0.009"/>
+  <testcase name="dadaUnaCitaConRecordatorioEnviado_cuandoSeBuscaPorMensajeWhatsappId_entoncesSeResuelveLaCitaOrigen()" classname="com.citassalud.integration.CitaJpaRepositoryAdapterIT" time="0.009"/>
+  <system-out><![CDATA[2026-07-05T17:23:37.203-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.citassalud.integration.CitaJpaRepositoryAdapterIT]: CitaJpaRepositoryAdapterIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-07-05T17:23:37.226-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.citassalud.SpringBootCitasSaludApplication for test class com.citassalud.integration.CitaJpaRepositoryAdapterIT
+2026-07-05T17:23:37.226-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.citassalud.integration.CitaJpaRepositoryAdapterIT]: CitaJpaRepositoryAdapterIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-07-05T17:23:37.234-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.citassalud.SpringBootCitasSaludApplication for test class com.citassalud.integration.CitaJpaRepositoryAdapterIT
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.0)
+
+2026-07-05T17:23:37.259-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] c.c.i.CitaJpaRepositoryAdapterIT         : Starting CitaJpaRepositoryAdapterIT using Java 25.0.3 with PID 65268 (started by Juan Pablo in C:\Users\Juan Pablo\Documents\MaestriaSoft\agente-citasSalud\spring-boot-citasSalud)
+2026-07-05T17:23:37.259-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] c.c.i.CitaJpaRepositoryAdapterIT         : No active profile set, falling back to 1 default profile: "default"
+2026-07-05T17:23:37.327-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-05T17:23:37.340-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 11 ms. Found 2 JPA repository interfaces.
+2026-07-05T17:23:37.351-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] beddedDataSourceBeanFactoryPostProcessor : Replacing 'dataSource' DataSource bean with embedded version
+2026-07-05T17:23:37.369-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] o.s.j.d.e.EmbeddedDatabaseFactory        : Starting embedded database: url='jdbc:h2:mem:3002b18e-21a4-40a8-8162-80f85a7ca8c2;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2026-07-05T17:23:37.388-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-07-05T17:23:37.406-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-05T17:23:37.408-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:mem:3002b18e-21a4-40a8-8162-80f85a7ca8c2]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: 3002B18E-21A4-40A8-8162-80F85A7CA8C2/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-07-05T17:23:37.445-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: drop table if exists cita cascade 
+Hibernate: drop table if exists recordatorio cascade 
+Hibernate: create table cita (fecha_hora timestamp(6) with time zone not null, recordatorio_enviado_en timestamp(6) with time zone, id uuid not null, medico_id uuid not null, paciente_id uuid not null, medico_nombre varchar(255) not null, paciente_nombre varchar(255) not null, paciente_numero_whatsapp varchar(255), ultimo_mensaje_whatsapp_id varchar(255), estado enum ('AGENDADA','CANCELADA','COMPLETADA','RECORDATORIO_ENVIADO') not null, primary key (id))
+Hibernate: create table recordatorio (intentos integer not null, enviado_en timestamp(6) with time zone, cita_id uuid not null, id uuid not null, canal varchar(255) not null, mensaje_proveedor_id varchar(255), estado_envio enum ('ENVIADO','FALLIDO','PENDIENTE','RESPONDIDO_CANCELACION','RESPONDIDO_NO_RECONOCIDO','SIN_NUMERO_VALIDO') not null, primary key (id))
+2026-07-05T17:23:37.450-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-05T17:23:37.484-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] c.c.i.CitaJpaRepositoryAdapterIT         : Started CitaJpaRepositoryAdapterIT in 0.246 seconds (process running for 7.491)
+Hibernate: select cje1_0.id,cje1_0.estado,cje1_0.fecha_hora,cje1_0.medico_id,cje1_0.medico_nombre,cje1_0.paciente_id,cje1_0.paciente_nombre,cje1_0.paciente_numero_whatsapp,cje1_0.recordatorio_enviado_en,cje1_0.ultimo_mensaje_whatsapp_id from cita cje1_0 where cje1_0.id=?
+Hibernate: select cje1_0.id,cje1_0.estado,cje1_0.fecha_hora,cje1_0.medico_id,cje1_0.medico_nombre,cje1_0.paciente_id,cje1_0.paciente_nombre,cje1_0.paciente_numero_whatsapp,cje1_0.recordatorio_enviado_en,cje1_0.ultimo_mensaje_whatsapp_id from cita cje1_0 where cje1_0.id=?
+Hibernate: insert into cita (estado,fecha_hora,medico_id,medico_nombre,paciente_id,paciente_nombre,paciente_numero_whatsapp,recordatorio_enviado_en,ultimo_mensaje_whatsapp_id,id) values (?,?,?,?,?,?,?,?,?,?)
+Hibernate: insert into cita (estado,fecha_hora,medico_id,medico_nombre,paciente_id,paciente_nombre,paciente_numero_whatsapp,recordatorio_enviado_en,ultimo_mensaje_whatsapp_id,id) values (?,?,?,?,?,?,?,?,?,?)
+Hibernate: select cje1_0.id,cje1_0.estado,cje1_0.fecha_hora,cje1_0.medico_id,cje1_0.medico_nombre,cje1_0.paciente_id,cje1_0.paciente_nombre,cje1_0.paciente_numero_whatsapp,cje1_0.recordatorio_enviado_en,cje1_0.ultimo_mensaje_whatsapp_id from cita cje1_0 where cje1_0.estado=? and cje1_0.fecha_hora between ? and ?
+Hibernate: select cje1_0.id,cje1_0.estado,cje1_0.fecha_hora,cje1_0.medico_id,cje1_0.medico_nombre,cje1_0.paciente_id,cje1_0.paciente_nombre,cje1_0.paciente_numero_whatsapp,cje1_0.recordatorio_enviado_en,cje1_0.ultimo_mensaje_whatsapp_id from cita cje1_0 where cje1_0.id=?
+Hibernate: select cje1_0.id,cje1_0.estado,cje1_0.fecha_hora,cje1_0.medico_id,cje1_0.medico_nombre,cje1_0.paciente_id,cje1_0.paciente_nombre,cje1_0.paciente_numero_whatsapp,cje1_0.recordatorio_enviado_en,cje1_0.ultimo_mensaje_whatsapp_id from cita cje1_0 where cje1_0.id=?
+Hibernate: select cje1_0.id,cje1_0.estado,cje1_0.fecha_hora,cje1_0.medico_id,cje1_0.medico_nombre,cje1_0.paciente_id,cje1_0.paciente_nombre,cje1_0.paciente_numero_whatsapp,cje1_0.recordatorio_enviado_en,cje1_0.ultimo_mensaje_whatsapp_id from cita cje1_0 where cje1_0.id=?
+Hibernate: insert into cita (estado,fecha_hora,medico_id,medico_nombre,paciente_id,paciente_nombre,paciente_numero_whatsapp,recordatorio_enviado_en,ultimo_mensaje_whatsapp_id,id) values (?,?,?,?,?,?,?,?,?,?)
+Hibernate: insert into cita (estado,fecha_hora,medico_id,medico_nombre,paciente_id,paciente_nombre,paciente_numero_whatsapp,recordatorio_enviado_en,ultimo_mensaje_whatsapp_id,id) values (?,?,?,?,?,?,?,?,?,?)
+Hibernate: select cje1_0.id,cje1_0.estado,cje1_0.fecha_hora,cje1_0.medico_id,cje1_0.medico_nombre,cje1_0.paciente_id,cje1_0.paciente_nombre,cje1_0.paciente_numero_whatsapp,cje1_0.recordatorio_enviado_en,cje1_0.ultimo_mensaje_whatsapp_id from cita cje1_0 where cje1_0.estado=? and cje1_0.fecha_hora between ? and ?
+Hibernate: select cje1_0.id,cje1_0.estado,cje1_0.fecha_hora,cje1_0.medico_id,cje1_0.medico_nombre,cje1_0.paciente_id,cje1_0.paciente_nombre,cje1_0.paciente_numero_whatsapp,cje1_0.recordatorio_enviado_en,cje1_0.ultimo_mensaje_whatsapp_id from cita cje1_0 where cje1_0.id=?
+Hibernate: insert into cita (estado,fecha_hora,medico_id,medico_nombre,paciente_id,paciente_nombre,paciente_numero_whatsapp,recordatorio_enviado_en,ultimo_mensaje_whatsapp_id,id) values (?,?,?,?,?,?,?,?,?,?)
+Hibernate: select cje1_0.id,cje1_0.estado,cje1_0.fecha_hora,cje1_0.medico_id,cje1_0.medico_nombre,cje1_0.paciente_id,cje1_0.paciente_nombre,cje1_0.paciente_numero_whatsapp,cje1_0.recordatorio_enviado_en,cje1_0.ultimo_mensaje_whatsapp_id from cita cje1_0 where cje1_0.ultimo_mensaje_whatsapp_id=?
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

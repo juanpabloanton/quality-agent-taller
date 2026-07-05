@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.citassalud.integration.WhatsAppWebhookHmacIT" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-07-05T22:23:38.742Z" hostname="JUANPABLOAY" time="0.031">
+  <properties/>
+  <testcase name="dadoUnPayloadSinCabeceraFirma_cuandoLlegaAlWebhook_entoncesDevuelve403()" classname="com.citassalud.integration.WhatsAppWebhookHmacIT" time="0.004"/>
+  <testcase name="dadoUnPayloadConFirmaHmacValida_cuandoLlegaAlWebhook_entoncesDevuelveOk()" classname="com.citassalud.integration.WhatsAppWebhookHmacIT" time="0.007"/>
+  <testcase name="dadoUnPayloadConFirmaHmacInvalida_cuandoLlegaAlWebhook_entoncesDevuelve403()" classname="com.citassalud.integration.WhatsAppWebhookHmacIT" time="0.006"/>
+  <system-out><![CDATA[2026-07-05T17:23:38.744-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.citassalud.integration.WhatsAppWebhookHmacIT]: WhatsAppWebhookHmacIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-07-05T17:23:38.748-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.citassalud.SpringBootCitasSaludApplication for test class com.citassalud.integration.WhatsAppWebhookHmacIT
+2026-07-05T17:23:38.748-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.citassalud.integration.WhatsAppWebhookHmacIT]: WhatsAppWebhookHmacIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-07-05T17:23:38.750-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.citassalud.SpringBootCitasSaludApplication for test class com.citassalud.integration.WhatsAppWebhookHmacIT
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.citassalud.unit.EnviarRecordatorioUseCaseTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-07-05T22:23:39.146Z" hostname="JUANPABLOAY" time="0.051">
+  <properties/>
+  <testcase name="dadoUnPacienteSinNumeroWhatsappValido_cuandoSeEjecutaElEnvio_entoncesRegistraElFalloYNoEnviaMensaje()" classname="com.citassalud.unit.EnviarRecordatorioUseCaseTest" time="0.047"/>
+  <testcase name="dadoUnFalloDelProveedorDeWhatsapp_cuandoSeEjecutaElEnvio_entoncesLaCitaPermaneceAgendada()" classname="com.citassalud.unit.EnviarRecordatorioUseCaseTest" time="0.001"/>
+  <testcase name="dadoUnaCitaAgendadaConNumeroValido_cuandoSeEjecutaElEnvio_entoncesEnviaElRecordatorioYMarcaLaCita()" classname="com.citassalud.unit.EnviarRecordatorioUseCaseTest" time="0.0"/>
+  <testcase name="dadoVariasCitasAgendadas_cuandoSeEjecutaElEnvioParaCadaUna_entoncesCadaUnaRecibeUnRecordatorioIndependiente()" classname="com.citassalud.unit.EnviarRecordatorioUseCaseTest" time="0.001"/>
+  <system-out><![CDATA[2026-07-05T17:23:39.194-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] com.citassalud.auditoria.recordatorio    : Recordatorio SIN_NUMERO_VALIDO citaId=c7220649-b092-42a3-8db0-3296d6530bf8 pacienteId=9ea1bb4a-0f57-4062-9b99-9ed75335a8be intentos=0 mensajeProveedorId=null - SIN_NUMERO_VALIDO - se notifica al área administrativa
+2026-07-05T17:23:39.196-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] com.citassalud.auditoria.recordatorio    : Recordatorio FALLIDO citaId=2078dde1-0151-4bf7-9db3-860a7fc9ced2 pacienteId=231d9230-62e0-4c23-80a5-53ddfd3bfe0b intentos=1 mensajeProveedorId=null - FALLIDO - se notifica al área administrativa
+2026-07-05T17:23:39.197-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] com.citassalud.auditoria.recordatorio    : Recordatorio ENVIADO citaId=b467633f-f3d4-40e8-9a71-6aba9b67de0c pacienteId=408c028f-3b59-4806-b1cb-1cb4fd746917 intentos=1 mensajeProveedorId=wamid.123 - ENVIADO
+2026-07-05T17:23:39.198-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] com.citassalud.auditoria.recordatorio    : Recordatorio ENVIADO citaId=153d1af4-415a-4fd6-9db6-d136ac18e2b2 pacienteId=7a843135-62a1-45ef-a986-21130a53ed16 intentos=1 mensajeProveedorId=wamid.1 - ENVIADO
+2026-07-05T17:23:39.198-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] com.citassalud.auditoria.recordatorio    : Recordatorio ENVIADO citaId=f93bb6cb-ec18-4148-a068-a14d1eaa2239 pacienteId=6491a7b9-4209-4a04-abd3-b663d6a21eff intentos=1 mensajeProveedorId=wamid.2 - ENVIADO
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

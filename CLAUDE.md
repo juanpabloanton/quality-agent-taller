@@ -63,7 +63,7 @@ va a `$PROYECTO/quality-output/`.
 2. **Pruebas:** en la raíz del proyecto, ejecuta la suite y la cobertura con Gradle
    (`cd "$PROYECTO" && ./gradlew test jacocoTestReport`) y lee
    `$PROYECTO/build/reports/jacoco/test/jacocoTestReport.xml`.
-3. **Seguridad:** usa el **Semgrep MCP** (`semgrep_scan` / `security_check`) para
+3. **Seguridad:** usa el **Semgrep MCP** (`semgrep_scan`) para
    escanear `$PROYECTO/src/main/java` y reunir vulnerabilidades; revisa secretos y
    endpoints sin autenticación. Ver `.mcp.json` y el README para qué hace el MCP.
 4. **Criterios:** cruza cada `FR-xxx` (y cada edge case relevante) del `spec.md` contra

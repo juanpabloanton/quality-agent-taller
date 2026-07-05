@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.citassalud.integration.WhatsAppWebhookControllerIT" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-07-05T22:23:38.677Z" hostname="JUANPABLOAY" time="0.063">
+  <properties/>
+  <testcase name="dadoUnMensajeEntranteConCancelar_cuandoLlegaAlWebhook_entoncesDelegaEnElCasoDeUsoYRespondeOk()" classname="com.citassalud.integration.WhatsAppWebhookControllerIT" time="0.023"/>
+  <testcase name="dadoUnPayloadSinMensajes_cuandoLlegaAlWebhook_entoncesNoDelegaEnElCasoDeUsoYRespondeOk()" classname="com.citassalud.integration.WhatsAppWebhookControllerIT" time="0.009"/>
+  <testcase name="dadoUnTokenDeVerificacionIncorrecto_cuandoMetaVerificaElWebhook_entoncesDevuelve403()" classname="com.citassalud.integration.WhatsAppWebhookControllerIT" time="0.006"/>
+  <testcase name="dadoElTokenDeVerificacionCorrecto_cuandoMetaVerificaElWebhook_entoncesDevuelveElChallenge()" classname="com.citassalud.integration.WhatsAppWebhookControllerIT" time="0.006"/>
+  <system-out><![CDATA[2026-07-05T17:23:38.680-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.citassalud.integration.WhatsAppWebhookControllerIT]: WhatsAppWebhookControllerIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-07-05T17:23:38.685-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.citassalud.SpringBootCitasSaludApplication for test class com.citassalud.integration.WhatsAppWebhookControllerIT
+2026-07-05T17:23:38.686-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.citassalud.integration.WhatsAppWebhookControllerIT]: WhatsAppWebhookControllerIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-07-05T17:23:38.689-05:00  INFO 65268 --- [spring-boot-citasSalud] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.citassalud.SpringBootCitasSaludApplication for test class com.citassalud.integration.WhatsAppWebhookControllerIT
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.citassalud.integration.WhatsAppCloudApiAdapterIT" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-07-05T22:23:37.784Z" hostname="JUANPABLOAY" time="0.893">
+  <properties/>
+  <testcase name="cuandoSeEnviaElRechazoPorVentanaVencida_entoncesSeHaceUnaSolaPeticionExitosa()" classname="com.citassalud.integration.WhatsAppCloudApiAdapterIT" time="0.717"/>
+  <testcase name="cuandoSeEnviaElRecordatorio_entoncesElCuerpoContieneNombreDelPacienteFechaHoraYNombreDelMedico()" classname="com.citassalud.integration.WhatsAppCloudApiAdapterIT" time="0.032"/>
+  <testcase name="dadoUnFalloTemporalPersistente_cuandoSeAgotanLosReintentos_entoncesFallaTrasElMaximoDeIntentos()" classname="com.citassalud.integration.WhatsAppCloudApiAdapterIT" time="0.057"/>
+  <testcase name="cuandoSeEnviaLaConfirmacionDeCancelacion_entoncesSeHaceUnaSolaPeticionExitosa()" classname="com.citassalud.integration.WhatsAppCloudApiAdapterIT" time="0.013"/>
+  <testcase name="dadoUnNumeroDeDestinoInvalido_cuandoSeEnviaElRecordatorio_entoncesFallaSinReintentar()" classname="com.citassalud.integration.WhatsAppCloudApiAdapterIT" time="0.014"/>
+  <testcase name="cuandoSeEnviaLaAclaracion_entoncesSeHaceUnaSolaPeticionExitosa()" classname="com.citassalud.integration.WhatsAppCloudApiAdapterIT" time="0.013"/>
+  <testcase name="dadoUnFalloTemporalSeguidoDeExito_cuandoSeEnviaElRecordatorio_entoncesReintentaYTermineExitoso()" classname="com.citassalud.integration.WhatsAppCloudApiAdapterIT" time="0.029"/>
+  <testcase name="dadoUnEnvioExitoso_cuandoSeEnviaElRecordatorio_entoncesDevuelveElMensajeProveedorId()" classname="com.citassalud.integration.WhatsAppCloudApiAdapterIT" time="0.013"/>
+  <system-out><![CDATA[2026-07-05T17:23:38.589-05:00  WARN 65268 --- [spring-boot-citasSalud] [    Test worker] c.c.i.whatsapp.WhatsAppCloudApiAdapter   : Fallo permanente al enviar WhatsApp a 573001234567 tras 3 intento(s): 503 Service Unavailable: [no body]
+2026-07-05T17:23:38.620-05:00  WARN 65268 --- [spring-boot-citasSalud] [    Test worker] c.c.i.whatsapp.WhatsAppCloudApiAdapter   : Fallo permanente al enviar WhatsApp a 573001234567 tras 1 intento(s): 400 Bad Request: "{"error":{"message":"numero invalido"}}<EOL>"
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -25,7 +25,7 @@ Un trabajo está terminado cuando, sobre el **código ya escrito**:
 
 - **Pruebas:** `./gradlew test jacocoTestReport`. La cobertura sale del XML de JaCoCo:
   `build/reports/jacoco/test/jacocoTestReport.xml`. No se estima: se lee.
-- **Seguridad:** **Semgrep MCP** (`semgrep_scan`, `security_check`) sobre `src/main/java`,
+- **Seguridad:** **Semgrep MCP** (`semgrep_scan`) sobre `src/main/java`,
   más un grep de secretos en `src/main` y la config. Ver `.mcp.json` y el README.
 - **Criterios:** se cruza cada **Functional Requirement** (`FR-xxx`) y cada **Edge Case**
   del `spec.md` (Spec Kit) con la prueba que lo cubre (por el nombre del test).

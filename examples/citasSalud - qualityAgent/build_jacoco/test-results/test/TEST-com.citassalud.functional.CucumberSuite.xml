@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.citassalud.functional.CucumberSuite" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-07-05T22:23:30.991Z" hostname="JUANPABLOAY" time="0.176">
+  <properties/>
+  <testcase name="Cancelación exitosa libera la franja horaria" classname="com.citassalud.functional.CucumberSuite" time="0.095"/>
+  <testcase name="Respuesta no reconocida no modifica la cita y reenvía la aclaración" classname="com.citassalud.functional.CucumberSuite" time="0.01"/>
+  <testcase name="El sistema confirma por WhatsApp la cancelación exitosa" classname="com.citassalud.functional.CucumberSuite" time="0.004"/>
+  <testcase name="Envío exitoso del recordatorio 24 horas antes del turno" classname="com.citassalud.functional.CucumberSuite" time="0.011"/>
+  <testcase name="Paciente sin número de WhatsApp válido registrado" classname="com.citassalud.functional.CucumberSuite" time="0.005"/>
+  <testcase name="Múltiples citas agendadas reciben recordatorios independientes" classname="com.citassalud.functional.CucumberSuite" time="0.006"/>
+  <system-out><![CDATA[17:23:31.151 [Test worker] INFO com.citassalud.auditoria.recordatorio -- Recordatorio ENVIADO citaId=f9d480a5-9d38-4b71-b83a-e1041fb7213c pacienteId=069ba5da-5086-442d-b125-7a4f62ecb421 intentos=1 mensajeProveedorId=wamid.test.1 - ENVIADO
+17:23:31.159 [Test worker] INFO com.citassalud.auditoria.recordatorio -- Recordatorio SIN_NUMERO_VALIDO citaId=572c2b4e-325e-4ecf-a2d8-a858ee30a5e3 pacienteId=a976d480-f5e2-44d4-9a3e-37ebaaf06964 intentos=0 mensajeProveedorId=null - SIN_NUMERO_VALIDO - se notifica al área administrativa
+17:23:31.166 [Test worker] INFO com.citassalud.auditoria.recordatorio -- Recordatorio ENVIADO citaId=7307df59-29bb-47b9-a547-bf816aed7383 pacienteId=9f860352-ccd8-46d9-ac9a-9ecf3e7ed0f3 intentos=1 mensajeProveedorId=wamid.test.1 - ENVIADO
+17:23:31.166 [Test worker] INFO com.citassalud.auditoria.recordatorio -- Recordatorio ENVIADO citaId=fb0890ba-5e94-469a-8724-2aacb6e30b2c pacienteId=9f860352-ccd8-46d9-ac9a-9ecf3e7ed0f3 intentos=1 mensajeProveedorId=wamid.test.2 - ENVIADO
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

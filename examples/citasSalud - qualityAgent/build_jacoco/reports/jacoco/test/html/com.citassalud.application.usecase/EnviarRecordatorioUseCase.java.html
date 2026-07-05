@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>EnviarRecordatorioUseCase.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">spring-boot-citasSalud</a> &gt; <a href="index.source.html" class="el_package">com.citassalud.application.usecase</a> &gt; <span class="el_source">EnviarRecordatorioUseCase.java</span></div><h1>EnviarRecordatorioUseCase.java</h1><pre class="source lang-java linenums">package com.citassalud.application.usecase;
+
+import com.citassalud.application.port.CitaRepositoryPort;
+import com.citassalud.application.port.RecordatorioRepositoryPort;
+import com.citassalud.application.port.WhatsAppGatewayPort;
+import com.citassalud.application.port.WhatsAppGatewayPort.ResultadoEnvioWhatsApp;
+import com.citassalud.domain.cita.Cita;
+import com.citassalud.domain.recordatorio.Recordatorio;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.time.Instant;
+import java.util.NoSuchElementException;
+import java.util.UUID;
+import java.util.function.Supplier;
+
+/**
+ * FR-001/FR-002/FR-006/FR-007: envía el recordatorio de una cita agendada y deja
+ * constancia auditable de cada intento (enviado, fallido, sin número válido).
+ */
+public class EnviarRecordatorioUseCase {
+
+<span class="fc" id="L23">    private static final Logger AUDITORIA = LoggerFactory.getLogger(&quot;com.citassalud.auditoria.recordatorio&quot;);</span>
+
+    private final CitaRepositoryPort citaRepositoryPort;
+    private final WhatsAppGatewayPort whatsAppGatewayPort;
+    private final RecordatorioRepositoryPort recordatorioRepositoryPort;
+    private final Supplier&lt;Instant&gt; reloj;
+
+    public EnviarRecordatorioUseCase(CitaRepositoryPort citaRepositoryPort, WhatsAppGatewayPort whatsAppGatewayPort,
+                                      RecordatorioRepositoryPort recordatorioRepositoryPort) {
+<span class="fc" id="L32">        this(citaRepositoryPort, whatsAppGatewayPort, recordatorioRepositoryPort, Instant::now);</span>
+<span class="fc" id="L33">    }</span>
+
+    EnviarRecordatorioUseCase(CitaRepositoryPort citaRepositoryPort, WhatsAppGatewayPort whatsAppGatewayPort,
+<span class="fc" id="L36">                               RecordatorioRepositoryPort recordatorioRepositoryPort, Supplier&lt;Instant&gt; reloj) {</span>
+<span class="fc" id="L37">        this.citaRepositoryPort = citaRepositoryPort;</span>
+<span class="fc" id="L38">        this.whatsAppGatewayPort = whatsAppGatewayPort;</span>
+<span class="fc" id="L39">        this.recordatorioRepositoryPort = recordatorioRepositoryPort;</span>
+<span class="fc" id="L40">        this.reloj = reloj;</span>
+<span class="fc" id="L41">    }</span>
+
+    public void ejecutar(UUID citaId) {
+<span class="fc" id="L44">        Cita cita = citaRepositoryPort.buscarPorId(citaId)</span>
+<span class="pc" id="L45">                .orElseThrow(() -&gt; new NoSuchElementException(&quot;Cita no encontrada: &quot; + citaId));</span>
+
+<span class="fc" id="L47">        Recordatorio recordatorio = Recordatorio.pendiente(UUID.randomUUID(), citaId);</span>
+
+<span class="fc bfc" id="L49" title="All 2 branches covered.">        if (!cita.getPaciente().tieneNumeroWhatsappValido()) {</span>
+<span class="fc" id="L50">            recordatorio.marcarSinNumeroValido();</span>
+<span class="fc" id="L51">            registrarAuditoria(recordatorio, cita,</span>
+                    &quot;SIN_NUMERO_VALIDO - se notifica al área administrativa&quot;);
+<span class="fc" id="L53">            return;</span>
+        }
+
+<span class="fc" id="L56">        recordatorio.registrarIntento();</span>
+<span class="fc" id="L57">        ResultadoEnvioWhatsApp resultado =</span>
+<span class="fc" id="L58">                whatsAppGatewayPort.enviarRecordatorio(cita.getPaciente(), cita.getMedico(), cita);</span>
+
+<span class="fc bfc" id="L60" title="All 2 branches covered.">        if (!resultado.exitoso()) {</span>
+<span class="fc" id="L61">            recordatorio.marcarFallido();</span>
+<span class="fc" id="L62">            registrarAuditoria(recordatorio, cita, &quot;FALLIDO - se notifica al área administrativa&quot;);</span>
+<span class="fc" id="L63">            return;</span>
+        }
+
+<span class="fc" id="L66">        Instant momento = reloj.get();</span>
+<span class="fc" id="L67">        recordatorio.marcarEnviado(momento, resultado.mensajeProveedorId());</span>
+<span class="fc" id="L68">        cita.registrarEnvioRecordatorio(momento, resultado.mensajeProveedorId());</span>
+<span class="fc" id="L69">        citaRepositoryPort.guardar(cita);</span>
+
+<span class="fc" id="L71">        registrarAuditoria(recordatorio, cita, &quot;ENVIADO&quot;);</span>
+<span class="fc" id="L72">    }</span>
+
+    private void registrarAuditoria(Recordatorio recordatorio, Cita cita, String detalle) {
+<span class="fc" id="L75">        recordatorioRepositoryPort.guardar(recordatorio);</span>
+<span class="fc" id="L76">        AUDITORIA.info(&quot;Recordatorio {} citaId={} pacienteId={} intentos={} mensajeProveedorId={} - {}&quot;,</span>
+<span class="fc" id="L77">                recordatorio.getEstadoEnvio(), cita.getId(), cita.getPaciente().getId(),</span>
+<span class="fc" id="L78">                recordatorio.getIntentos(), recordatorio.getMensajeProveedorId(), detalle);</span>
+<span class="fc" id="L79">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.14.202510111229</span></div></body></html>
