@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - com.cienciayfe.secretaria.adaptadores.entrada.InformacionAcademicaControllerIT</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<div class="breadcrumbs">
+<a class="breadcrumb" href="../index.html">all</a> &gt; 
+<span class="breadcrumb">com.cienciayfe.secretaria.adaptadores.entrada.InformacionAcademicaControllerIT</span>
+</div>
+<div class="tab-container">
+<ul class="tabLinks">
+<li>
+<a class="successGroup" href="#">Gradle Test Run :test</a>
+</li>
+</ul>
+<div class="tab">
+<h2>Gradle Test Run :test</h2>
+<h1>InformacionAcademicaController — Integración</h1>
+<div class="tab-container">
+<ul class="tabLinks">
+<li>
+<a class="" href="#">summary</a>
+</li>
+<li>
+<a class="" href="#">standard output</a>
+</li>
+</ul>
+<div class="tab">
+<h2>summary</h2>
+<div>
+<div class="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox">
+<div class="counter">13</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox">
+<div class="counter">0</div>
+<p>skipped</p>
+</div>
+</td>
+<td>
+<div class="infoBox duration">
+<div class="counter">1.649s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<table class="test-results">
+<thead>
+<tr>
+<th>Child</th>
+<th>Name</th>
+<th>Tests</th>
+<th>Failures</th>
+<th>Skipped</th>
+<th>Duration</th>
+<th>Success rate</th>
+</tr>
+</thead>
+<tr>
+<td class="success">Dado archivo con content-type no CSV, Cuando POST, Entonces 400 TIPO_INVALIDO</td>
+<td class="path">dadoArchivoConTipoInvalidoCuandoPostEntonces400()</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0.005s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="success">Dado CSV con calificacion_final inválida, Cuando POST, Entonces 400 CALIFICACION_INVALIDA</td>
+<td class="path">dadoCsvConCalificacionInvalidaCuandoPostEntonces400()</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0.008s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="success">Dado CSV con campo requerido vacío, Cuando POST, Entonces 400 CAMPO_REQUERIDO</td>
+<td class="path">dadoCsvConCampoRequeridoVacioCuandoPostEntonces400()</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0.006s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="success">Dado CSV con número de columnas incorrecto en una fila, Cuando POST, Entonces 400 FORMATO_INVALIDO</td>
+<td class="path">dadoCsvConColumnasIncorrectasCuandoPostEntonces400()</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0.007s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="success">Dado CSV con condicion inválida, Cuando POST, Entonces 400 CONDICION_INVALIDA</td>
+<td class="path">dadoCsvConCondicionInvalidaCuandoPostEntonces400()</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0.018s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="success">Dado CSV con encabezados incorrectos, Cuando POST, Entonces 400</td>
+<td class="path">dadoCsvInvalidoCuandoPostEntonces400()</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0.006s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="success">Dado CSV válido para 2025-II, Cuando POST con header, Entonces 201 con metadatos</td>
+<td class="path">dadoCsvValidoCuandoPostEntonces201()</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0.009s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="success">Dado fallo de conexión en la segunda carga, Cuando POST, Entonces la fuente anterior permanece intacta</td>
+<td class="path">dadoFalloConexionEnSegundaCargaEntoncesFuenteAnteriorPermaneceIntacta()</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0.135s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="success">Dado período CERRADO, Cuando POST, Entonces 404</td>
+<td class="path">dadoPeriodoCerradoCuandoPostEntonces404()</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0.006s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="success">Dado período inexistente, Cuando GET, Entonces 404</td>
+<td class="path">dadoPeriodoInexistenteCuandoGetEntonces404()</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0.008s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="success">Dado período inexistente, Cuando POST, Entonces 404</td>
+<td class="path">dadoPeriodoInexistenteCuandoPostEntonces404()</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0.007s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="success">Dado período 2025-I sin información, Cuando GET, Entonces 200 con SIN_INFORMACION</td>
+<td class="path">dadoPeriodoSinInformacionCuandoGetEntonces200SinInformacion()</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0.748s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="success">Dado POST con header X-Usuario-Responsable en blanco, Entonces 400 HEADER_REQUERIDO</td>
+<td class="path">dadoPostConHeaderUsuarioResponsableEnBlancoEntonces400()</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0.006s</td>
+<td class="success">100%</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="tab">
+<h2>standard output</h2>
+<span class="code">
+<pre id="root-0-test-stdout-com.cienciayfe.secretaria.adaptadores.entrada.InformacionAcademicaControllerIT">2026-07-05T18:54:46.444-05:00  INFO 74996 --- [secretaria] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.cienciayfe.secretaria.adaptadores.entrada.InformacionAcademicaControllerIT]: InformacionAcademicaControllerIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-07-05T18:54:46.463-05:00  INFO 74996 --- [secretaria] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.cienciayfe.secretaria.SecretariaApplication for test class com.cienciayfe.secretaria.adaptadores.entrada.InformacionAcademicaControllerIT
+2026-07-05T18:54:46.464-05:00  INFO 74996 --- [secretaria] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.cienciayfe.secretaria.adaptadores.entrada.InformacionAcademicaControllerIT]: InformacionAcademicaControllerIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-07-05T18:54:46.468-05:00  INFO 74996 --- [secretaria] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.cienciayfe.secretaria.SecretariaApplication for test class com.cienciayfe.secretaria.adaptadores.entrada.InformacionAcademicaControllerIT
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.0)
+
+2026-07-05T18:54:46.495-05:00  INFO 74996 --- [secretaria] [    Test worker] c.s.a.e.InformacionAcademicaControllerIT : Starting InformacionAcademicaControllerIT using Java 25.0.3 with PID 74996 (started by Juan Pablo in C:\Users\Juan Pablo\Documents\MaestriaSoft\proyecto-final\proyectos\spb-secretaria)
+2026-07-05T18:54:46.495-05:00  INFO 74996 --- [secretaria] [    Test worker] c.s.a.e.InformacionAcademicaControllerIT : The following 1 profile is active: &quot;test&quot;
+2026-07-05T18:54:46.613-05:00  INFO 74996 --- [secretaria] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-07-05T18:54:46.625-05:00  INFO 74996 --- [secretaria] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 10 ms. Found 2 JPA repository interfaces.
+2026-07-05T18:54:46.669-05:00  INFO 74996 --- [secretaria] [    Test worker] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-07-05T18:54:46.683-05:00  INFO 74996 --- [secretaria] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-07-05T18:54:46.685-05:00  INFO 74996 --- [secretaria] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2026-07-05T18:54:46.685-05:00  INFO 74996 --- [secretaria] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection conn10: url=jdbc:h2:mem:secretaria user=SA
+2026-07-05T18:54:46.686-05:00  INFO 74996 --- [secretaria] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2026-07-05T18:54:46.686-05:00  WARN 74996 --- [secretaria] [    Test worker] org.hibernate.orm.core                   : HHH000511: The 2.4.240 version for [org.hibernate.dialect.PostgreSQLDialect] is no longer supported, hence certain features may not work properly.The minimum supported version is 14.0.0. Check the community dialects project for available legacy versions.
+2026-07-05T18:54:46.686-05:00  WARN 74996 --- [secretaria] [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-07-05T18:54:46.687-05:00  INFO 74996 --- [secretaria] [    Test worker] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:mem:secretaria]
+	Database driver: H2 JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 2.4.240
+	Default catalog/schema: SECRETARIA/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-07-05T18:54:46.724-05:00  INFO 74996 --- [secretaria] [    Test worker] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-07-05T18:54:46.725-05:00  INFO 74996 --- [secretaria] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-07-05T18:54:46.896-05:00  WARN 74996 --- [secretaria] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-07-05T18:54:46.977-05:00  INFO 74996 --- [secretaria] [    Test worker] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsService
+2026-07-05T18:54:47.082-05:00  INFO 74996 --- [secretaria] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-07-05T18:54:47.083-05:00  INFO 74996 --- [secretaria] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-07-05T18:54:47.084-05:00  INFO 74996 --- [secretaria] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-07-05T18:54:47.107-05:00  INFO 74996 --- [secretaria] [    Test worker] c.s.a.e.InformacionAcademicaControllerIT : Started InformacionAcademicaControllerIT in 0.633 seconds (process running for 5.74)
+</pre>
+<button class="clipboard-copy-btn" aria-label="Copy to clipboard" data-copy-element-id="root-0-test-stdout-com.cienciayfe.secretaria.adaptadores.entrada.InformacionAcademicaControllerIT">Copy</button>
+</span>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="https://www.gradle.org">Gradle 9.5.1</a> at 5 jul 2026, 6:54:51 p. m.</p>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="10.18.1">
+<file name="C:\Users\Juan Pablo\Documents\MaestriaSoft\proyecto-final\proyectos\spb-secretaria\src\test\java\com\cienciayfe\secretaria\adaptadores\entrada\InformacionAcademicaControllerIT.java">
+</file>
+<file name="C:\Users\Juan Pablo\Documents\MaestriaSoft\proyecto-final\proyectos\spb-secretaria\src\test\java\com\cienciayfe\secretaria\adaptadores\entrada\rest\GlobalExceptionHandlerTest.java">
+</file>
+<file name="C:\Users\Juan Pablo\Documents\MaestriaSoft\proyecto-final\proyectos\spb-secretaria\src\test\java\com\cienciayfe\secretaria\adaptadores\entrada\rest\InformacionAcademicaControllerTest.java">
+</file>
+<file name="C:\Users\Juan Pablo\Documents\MaestriaSoft\proyecto-final\proyectos\spb-secretaria\src\test\java\com\cienciayfe\secretaria\adaptadores\salida\persistencia\RepositorioAdaptersTest.java">
+</file>
+<file name="C:\Users\Juan Pablo\Documents\MaestriaSoft\proyecto-final\proyectos\spb-secretaria\src\test\java\com\cienciayfe\secretaria\aplicacion\CargarInformacionAcademicaServiceTest.java">
+</file>
+<file name="C:\Users\Juan Pablo\Documents\MaestriaSoft\proyecto-final\proyectos\spb-secretaria\src\test\java\com\cienciayfe\secretaria\aplicacion\ConsultarInformacionAcademicaServiceTest.java">
+</file>
+<file name="C:\Users\Juan Pablo\Documents\MaestriaSoft\proyecto-final\proyectos\spb-secretaria\src\test\java\com\cienciayfe\secretaria\dominio\InformacionAcademicaTest.java">
+</file>
+<file name="C:\Users\Juan Pablo\Documents\MaestriaSoft\proyecto-final\proyectos\spb-secretaria\src\test\java\com\cienciayfe\secretaria\funcional\CentralizarInformacionAcademicaFuncionalTest.java">
+</file>
+<file name="C:\Users\Juan Pablo\Documents\MaestriaSoft\proyecto-final\proyectos\spb-secretaria\src\test\java\com\cienciayfe\secretaria\SecretariaApplicationTests.java">
+</file>
+</checkstyle>

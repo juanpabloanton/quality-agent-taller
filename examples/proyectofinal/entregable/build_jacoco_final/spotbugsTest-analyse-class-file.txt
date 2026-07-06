@@ -1,0 +1,9 @@
+C:\Users\Juan Pablo\Documents\MaestriaSoft\proyecto-final\proyectos\spb-secretaria\build\classes\java\test\com\cienciayfe\secretaria\adaptadores\entrada\InformacionAcademicaControllerIT.class
+C:\Users\Juan Pablo\Documents\MaestriaSoft\proyecto-final\proyectos\spb-secretaria\build\classes\java\test\com\cienciayfe\secretaria\adaptadores\entrada\rest\GlobalExceptionHandlerTest.class
+C:\Users\Juan Pablo\Documents\MaestriaSoft\proyecto-final\proyectos\spb-secretaria\build\classes\java\test\com\cienciayfe\secretaria\adaptadores\entrada\rest\InformacionAcademicaControllerTest.class
+C:\Users\Juan Pablo\Documents\MaestriaSoft\proyecto-final\proyectos\spb-secretaria\build\classes\java\test\com\cienciayfe\secretaria\adaptadores\salida\persistencia\RepositorioAdaptersTest.class
+C:\Users\Juan Pablo\Documents\MaestriaSoft\proyecto-final\proyectos\spb-secretaria\build\classes\java\test\com\cienciayfe\secretaria\aplicacion\CargarInformacionAcademicaServiceTest.class
+C:\Users\Juan Pablo\Documents\MaestriaSoft\proyecto-final\proyectos\spb-secretaria\build\classes\java\test\com\cienciayfe\secretaria\aplicacion\ConsultarInformacionAcademicaServiceTest.class
+C:\Users\Juan Pablo\Documents\MaestriaSoft\proyecto-final\proyectos\spb-secretaria\build\classes\java\test\com\cienciayfe\secretaria\dominio\InformacionAcademicaTest.class
+C:\Users\Juan Pablo\Documents\MaestriaSoft\proyecto-final\proyectos\spb-secretaria\build\classes\java\test\com\cienciayfe\secretaria\funcional\CentralizarInformacionAcademicaFuncionalTest.class
+C:\Users\Juan Pablo\Documents\MaestriaSoft\proyecto-final\proyectos\spb-secretaria\build\classes\java\test\com\cienciayfe\secretaria\SecretariaApplicationTests.class

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CargarInformacionAcademicaService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">secretaria</a> &gt; <a href="index.source.html" class="el_package">com.cienciayfe.secretaria.aplicacion.servicio</a> &gt; <span class="el_source">CargarInformacionAcademicaService.java</span></div><h1>CargarInformacionAcademicaService.java</h1><pre class="source lang-java linenums">package com.cienciayfe.secretaria.aplicacion.servicio;
+
+import com.cienciayfe.secretaria.aplicacion.puerto.entrada.CargarInformacionAcademicaUseCase;
+import com.cienciayfe.secretaria.aplicacion.puerto.salida.InformacionAcademicaRepositorio;
+import com.cienciayfe.secretaria.aplicacion.puerto.salida.PeriodoAcademicoRepositorio;
+import com.cienciayfe.secretaria.dominio.excepcion.ArchivoInvalidoException;
+import com.cienciayfe.secretaria.dominio.excepcion.PeriodoNoHabilitadoException;
+import com.cienciayfe.secretaria.dominio.modelo.InformacionAcademica;
+import com.cienciayfe.secretaria.dominio.modelo.InformacionAcademica.EstadoInformacion;
+import com.cienciayfe.secretaria.dominio.modelo.PeriodoAcademico;
+import java.nio.charset.StandardCharsets;
+import java.time.LocalDateTime;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Set;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+@Service
+@RequiredArgsConstructor
+public class CargarInformacionAcademicaService implements CargarInformacionAcademicaUseCase {
+
+<span class="fc" id="L23">    private static final String[] ENCABEZADOS_ESPERADOS = {</span>
+        &quot;codigo_estudiante&quot;, &quot;apellido_paterno&quot;, &quot;apellido_materno&quot;,
+        &quot;nombres&quot;, &quot;calificacion_final&quot;, &quot;condicion&quot;
+    };
+<span class="fc" id="L27">    private static final Set&lt;String&gt; CONDICIONES_VALIDAS = Set.of(&quot;PROMOVIDO&quot;, &quot;REPROBADO&quot;, &quot;ABANDERADO&quot;);</span>
+    private static final int INDICE_NOMBRES = 3;
+    private static final int INDICE_CALIFICACION = 4;
+    private static final int INDICE_CONDICION = 5;
+    private static final double CALIFICACION_MAXIMA = 20.0;
+
+    private final PeriodoAcademicoRepositorio periodoRepositorio;
+    private final InformacionAcademicaRepositorio informacionRepositorio;
+
+    @Override
+    public InformacionAcademica cargar(String codigoPeriodo, byte[] contenido, String nombreArchivo, String usuarioResponsable) {
+<span class="fc" id="L38">        PeriodoAcademico periodo = periodoRepositorio.findByCodigo(codigoPeriodo)</span>
+<span class="fc" id="L39">                .orElseThrow(() -&gt; new PeriodoNoHabilitadoException(codigoPeriodo,</span>
+                        &quot;El período '&quot; + codigoPeriodo + &quot;' no existe en el sistema&quot;));
+
+<span class="fc bfc" id="L42" title="All 2 branches covered.">        if (!periodo.estaHabilitado()) {</span>
+<span class="fc" id="L43">            throw new PeriodoNoHabilitadoException(codigoPeriodo,</span>
+                    &quot;El período '&quot; + codigoPeriodo + &quot;' está cerrado y no acepta cargas de información&quot;);
+        }
+
+<span class="pc bpc" id="L47" title="1 of 4 branches missed.">        if (contenido == null || contenido.length == 0) {</span>
+<span class="fc" id="L48">            throw new ArchivoInvalidoException(&quot;ARCHIVO_VACIO&quot;, &quot;El archivo no puede estar vacío&quot;);</span>
+        }
+
+<span class="fc" id="L51">        List&lt;String&gt; lineas = parsearLineas(contenido);</span>
+<span class="fc" id="L52">        validarEncabezados(lineas.get(0));</span>
+
+<span class="fc bfc" id="L54" title="All 2 branches covered.">        if (lineas.size() &lt; 2) {</span>
+<span class="fc" id="L55">            throw new ArchivoInvalidoException(&quot;ARCHIVO_VACIO&quot;, &quot;El archivo debe contener al menos una fila de datos&quot;);</span>
+        }
+
+<span class="fc bfc" id="L58" title="All 2 branches covered.">        for (int i = 1; i &lt; lineas.size(); i++) {</span>
+<span class="fc" id="L59">            validarFila(lineas.get(i), i + 1);</span>
+        }
+
+<span class="fc" id="L62">        InformacionAcademica nueva = new InformacionAcademica(null, periodo.id(), contenido,</span>
+                nombreArchivo, contenido.length, EstadoInformacion.DISPONIBLE,
+<span class="fc" id="L64">                LocalDateTime.now(), usuarioResponsable);</span>
+
+<span class="fc" id="L66">        return informacionRepositorio.save(nueva);</span>
+    }
+
+    private List&lt;String&gt; parsearLineas(byte[] contenido) {
+<span class="fc" id="L70">        String texto = new String(contenido, StandardCharsets.UTF_8);</span>
+<span class="fc" id="L71">        return Arrays.stream(texto.split(&quot;\r?\n&quot;))</span>
+<span class="pc bpc" id="L72" title="1 of 2 branches missed.">                .filter(l -&gt; !l.isBlank())</span>
+<span class="fc" id="L73">                .toList();</span>
+    }
+
+    private void validarEncabezados(String primeraLinea) {
+<span class="fc" id="L77">        String[] columnas = primeraLinea.split(&quot;;&quot;, -1);</span>
+<span class="fc" id="L78">        String[] esperados = ENCABEZADOS_ESPERADOS;</span>
+<span class="fc bfc" id="L79" title="All 2 branches covered.">        if (columnas.length != esperados.length) {</span>
+<span class="fc" id="L80">            throw new ArchivoInvalidoException(&quot;ENCABEZADOS_INVALIDOS&quot;, encabezadoEsperadoMsg());</span>
+        }
+<span class="fc bfc" id="L82" title="All 2 branches covered.">        for (int i = 0; i &lt; esperados.length; i++) {</span>
+<span class="pc bpc" id="L83" title="1 of 2 branches missed.">            if (!esperados[i].equals(columnas[i].trim())) {</span>
+<span class="nc" id="L84">                throw new ArchivoInvalidoException(&quot;ENCABEZADOS_INVALIDOS&quot;, encabezadoEsperadoMsg());</span>
+            }
+        }
+<span class="fc" id="L87">    }</span>
+
+    private void validarFila(String linea, int numeroFila) {
+<span class="fc" id="L90">        String[] cols = linea.split(&quot;;&quot;, -1);</span>
+<span class="fc bfc" id="L91" title="All 2 branches covered.">        if (cols.length != ENCABEZADOS_ESPERADOS.length) {</span>
+<span class="fc" id="L92">            throw new ArchivoInvalidoException(&quot;FORMATO_INVALIDO&quot;,</span>
+                    &quot;Fila &quot; + numeroFila + &quot;: número de columnas incorrecto&quot;);
+        }
+<span class="fc bfc" id="L95" title="All 2 branches covered.">        if (cols[0].isBlank()) {</span>
+<span class="fc" id="L96">            throw new ArchivoInvalidoException(&quot;CAMPO_REQUERIDO&quot;, &quot;Fila &quot; + numeroFila + &quot;: codigo_estudiante es obligatorio&quot;);</span>
+        }
+<span class="fc bfc" id="L98" title="All 2 branches covered.">        if (cols[1].isBlank()) {</span>
+<span class="fc" id="L99">            throw new ArchivoInvalidoException(&quot;CAMPO_REQUERIDO&quot;, &quot;Fila &quot; + numeroFila + &quot;: apellido_paterno es obligatorio&quot;);</span>
+        }
+<span class="fc bfc" id="L101" title="All 2 branches covered.">        if (cols[INDICE_NOMBRES].isBlank()) {</span>
+<span class="fc" id="L102">            throw new ArchivoInvalidoException(&quot;CAMPO_REQUERIDO&quot;, &quot;Fila &quot; + numeroFila + &quot;: nombres es obligatorio&quot;);</span>
+        }
+<span class="fc" id="L104">        validarCalificacion(cols[INDICE_CALIFICACION].trim(), numeroFila);</span>
+<span class="fc" id="L105">        validarCondicion(cols[INDICE_CONDICION].trim(), numeroFila);</span>
+<span class="fc" id="L106">    }</span>
+
+    private void validarCalificacion(String valor, int fila) {
+        try {
+<span class="fc" id="L110">            double cal = Double.parseDouble(valor);</span>
+<span class="pc bpc" id="L111" title="1 of 4 branches missed.">            if (cal &lt; 0.0 || cal &gt; CALIFICACION_MAXIMA) {</span>
+<span class="fc" id="L112">                throw new ArchivoInvalidoException(&quot;CALIFICACION_INVALIDA&quot;,</span>
+                        &quot;Fila &quot; + fila + &quot;: calificacion_final '&quot; + valor + &quot;' no es válida. Debe ser un número entre 0.0 y 20.0&quot;);
+            }
+<span class="fc" id="L115">        } catch (NumberFormatException e) {</span>
+<span class="fc" id="L116">            throw new ArchivoInvalidoException(&quot;CALIFICACION_INVALIDA&quot;,</span>
+                    &quot;Fila &quot; + fila + &quot;: calificacion_final '&quot; + valor + &quot;' no es válida. Debe ser un número entre 0.0 y 20.0&quot;);
+<span class="fc" id="L118">        }</span>
+<span class="fc" id="L119">    }</span>
+
+    private void validarCondicion(String valor, int fila) {
+<span class="fc bfc" id="L122" title="All 2 branches covered.">        if (!CONDICIONES_VALIDAS.contains(valor)) {</span>
+<span class="fc" id="L123">            throw new ArchivoInvalidoException(&quot;CONDICION_INVALIDA&quot;,</span>
+                    &quot;Fila &quot; + fila + &quot;: condicion '&quot; + valor + &quot;' no es válida. Valores permitidos: PROMOVIDO, REPROBADO, ABANDERADO&quot;);
+        }
+<span class="fc" id="L126">    }</span>
+
+    private String encabezadoEsperadoMsg() {
+<span class="fc" id="L129">        return &quot;Los encabezados del archivo no coinciden con el formato esperado. Esperado: &quot;</span>
+<span class="fc" id="L130">                + String.join(&quot;;&quot;, ENCABEZADOS_ESPERADOS);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.15.202606040825</span></div></body></html>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="10.18.1">
+<file name="C:\Users\Juan Pablo\Documents\MaestriaSoft\proyecto-final\proyectos\spb-secretaria\src\main\java\com\cienciayfe\secretaria\adaptadores\entrada\rest\GlobalExceptionHandler.java">
+</file>
+<file name="C:\Users\Juan Pablo\Documents\MaestriaSoft\proyecto-final\proyectos\spb-secretaria\src\main\java\com\cienciayfe\secretaria\adaptadores\entrada\rest\InformacionAcademicaController.java">
+</file>
+<file name="C:\Users\Juan Pablo\Documents\MaestriaSoft\proyecto-final\proyectos\spb-secretaria\src\main\java\com\cienciayfe\secretaria\adaptadores\salida\persistencia\entidad\InformacionAcademicaEntity.java">
+</file>
+<file name="C:\Users\Juan Pablo\Documents\MaestriaSoft\proyecto-final\proyectos\spb-secretaria\src\main\java\com\cienciayfe\secretaria\adaptadores\salida\persistencia\entidad\PeriodoAcademicoEntity.java">
+</file>
+<file name="C:\Users\Juan Pablo\Documents\MaestriaSoft\proyecto-final\proyectos\spb-secretaria\src\main\java\com\cienciayfe\secretaria\adaptadores\salida\persistencia\InformacionAcademicaJpaRepositorio.java">
+</file>
+<file name="C:\Users\Juan Pablo\Documents\MaestriaSoft\proyecto-final\proyectos\spb-secretaria\src\main\java\com\cienciayfe\secretaria\adaptadores\salida\persistencia\InformacionAcademicaRepositorioAdapter.java">
+</file>
+<file name="C:\Users\Juan Pablo\Documents\MaestriaSoft\proyecto-final\proyectos\spb-secretaria\src\main\java\com\cienciayfe\secretaria\adaptadores\salida\persistencia\PeriodoAcademicoJpaRepositorio.java">
+</file>
+<file name="C:\Users\Juan Pablo\Documents\MaestriaSoft\proyecto-final\proyectos\spb-secretaria\src\main\java\com\cienciayfe\secretaria\adaptadores\salida\persistencia\PeriodoAcademicoRepositorioAdapter.java">
+</file>
+<file name="C:\Users\Juan Pablo\Documents\MaestriaSoft\proyecto-final\proyectos\spb-secretaria\src\main\java\com\cienciayfe\secretaria\aplicacion\puerto\entrada\CargarInformacionAcademicaUseCase.java">
+</file>
+<file name="C:\Users\Juan Pablo\Documents\MaestriaSoft\proyecto-final\proyectos\spb-secretaria\src\main\java\com\cienciayfe\secretaria\aplicacion\puerto\entrada\ConsultarInformacionAcademicaUseCase.java">
+</file>
+<file name="C:\Users\Juan Pablo\Documents\MaestriaSoft\proyecto-final\proyectos\spb-secretaria\src\main\java\com\cienciayfe\secretaria\aplicacion\puerto\salida\InformacionAcademicaRepositorio.java">
+</file>
+<file name="C:\Users\Juan Pablo\Documents\MaestriaSoft\proyecto-final\proyectos\spb-secretaria\src\main\java\com\cienciayfe\secretaria\aplicacion\puerto\salida\PeriodoAcademicoRepositorio.java">
+</file>
+<file name="C:\Users\Juan Pablo\Documents\MaestriaSoft\proyecto-final\proyectos\spb-secretaria\src\main\java\com\cienciayfe\secretaria\aplicacion\servicio\CargarInformacionAcademicaService.java">
+</file>
+<file name="C:\Users\Juan Pablo\Documents\MaestriaSoft\proyecto-final\proyectos\spb-secretaria\src\main\java\com\cienciayfe\secretaria\aplicacion\servicio\ConsultarInformacionAcademicaService.java">
+</file>
+<file name="C:\Users\Juan Pablo\Documents\MaestriaSoft\proyecto-final\proyectos\spb-secretaria\src\main\java\com\cienciayfe\secretaria\dominio\excepcion\ArchivoInvalidoException.java">
+</file>
+<file name="C:\Users\Juan Pablo\Documents\MaestriaSoft\proyecto-final\proyectos\spb-secretaria\src\main\java\com\cienciayfe\secretaria\dominio\excepcion\PeriodoNoHabilitadoException.java">
+</file>
+<file name="C:\Users\Juan Pablo\Documents\MaestriaSoft\proyecto-final\proyectos\spb-secretaria\src\main\java\com\cienciayfe\secretaria\dominio\modelo\InformacionAcademica.java">
+</file>
+<file name="C:\Users\Juan Pablo\Documents\MaestriaSoft\proyecto-final\proyectos\spb-secretaria\src\main\java\com\cienciayfe\secretaria\dominio\modelo\PeriodoAcademico.java">
+</file>
+<file name="C:\Users\Juan Pablo\Documents\MaestriaSoft\proyecto-final\proyectos\spb-secretaria\src\main\java\com\cienciayfe\secretaria\infraestructura\configuracion\AppConfig.java">
+</file>
+<file name="C:\Users\Juan Pablo\Documents\MaestriaSoft\proyecto-final\proyectos\spb-secretaria\src\main\java\com\cienciayfe\secretaria\infraestructura\configuracion\SecurityConfig.java">
+</file>
+<file name="C:\Users\Juan Pablo\Documents\MaestriaSoft\proyecto-final\proyectos\spb-secretaria\src\main\java\com\cienciayfe\secretaria\SecretariaApplication.java">
+</file>
+</checkstyle>

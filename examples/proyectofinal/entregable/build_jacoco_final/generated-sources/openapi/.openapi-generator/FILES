@@ -1,0 +1,8 @@
+.openapi-generator-ignore
+README.md
+pom.xml
+src/main/java/com/cienciayfe/secretaria/adaptadores/entrada/rest/generated/ApiUtil.java
+src/main/java/com/cienciayfe/secretaria/adaptadores/entrada/rest/generated/InformacionAcademicaApi.java
+src/main/java/com/cienciayfe/secretaria/adaptadores/entrada/rest/generated/model/CargaResponse.java
+src/main/java/com/cienciayfe/secretaria/adaptadores/entrada/rest/generated/model/ErrorResponse.java
+src/main/java/com/cienciayfe/secretaria/adaptadores/entrada/rest/generated/model/FuenteCentralResponse.java

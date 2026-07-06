@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>InformacionAcademicaRepositorioAdapter.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">secretaria</a> &gt; <a href="index.source.html" class="el_package">com.cienciayfe.secretaria.adaptadores.salida.persistencia</a> &gt; <span class="el_source">InformacionAcademicaRepositorioAdapter.java</span></div><h1>InformacionAcademicaRepositorioAdapter.java</h1><pre class="source lang-java linenums">package com.cienciayfe.secretaria.adaptadores.salida.persistencia;
+
+import com.cienciayfe.secretaria.adaptadores.salida.persistencia.entidad.InformacionAcademicaEntity;
+import com.cienciayfe.secretaria.aplicacion.puerto.salida.InformacionAcademicaRepositorio;
+import com.cienciayfe.secretaria.dominio.modelo.InformacionAcademica;
+import com.cienciayfe.secretaria.dominio.modelo.InformacionAcademica.EstadoInformacion;
+import java.util.Optional;
+import java.util.UUID;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Repository;
+
+@Repository
+@RequiredArgsConstructor
+class InformacionAcademicaRepositorioAdapter implements InformacionAcademicaRepositorio {
+
+    private final InformacionAcademicaJpaRepositorio jpa;
+
+    @Override
+    public InformacionAcademica save(InformacionAcademica dominio) {
+<span class="fc" id="L20">        InformacionAcademicaEntity entity = jpa</span>
+<span class="fc" id="L21">                .findByPeriodoAcademicoId(dominio.periodoAcademicoId())</span>
+<span class="fc" id="L22">                .map(existing -&gt; actualizarEntity(existing, dominio))</span>
+<span class="fc" id="L23">                .orElseGet(() -&gt; toEntity(dominio));</span>
+<span class="fc" id="L24">        return toDomain(jpa.save(entity));</span>
+    }
+
+    @Override
+    public Optional&lt;InformacionAcademica&gt; findByPeriodoAcademicoId(UUID periodoAcademicoId) {
+<span class="fc" id="L29">        return jpa.findByPeriodoAcademicoId(periodoAcademicoId).map(this::toDomain);</span>
+    }
+
+    private InformacionAcademicaEntity actualizarEntity(InformacionAcademicaEntity e, InformacionAcademica d) {
+<span class="fc" id="L33">        e.setContenido(d.contenido());</span>
+<span class="fc" id="L34">        e.setNombreArchivo(d.nombreArchivo());</span>
+<span class="fc" id="L35">        e.setTamanioBytes(d.tamanioBytes());</span>
+<span class="fc" id="L36">        e.setFechaCarga(d.fechaCarga());</span>
+<span class="fc" id="L37">        e.setUsuarioResponsable(d.usuarioResponsable());</span>
+<span class="fc" id="L38">        return e;</span>
+    }
+
+    private InformacionAcademicaEntity toEntity(InformacionAcademica d) {
+<span class="fc" id="L42">        InformacionAcademicaEntity e = new InformacionAcademicaEntity();</span>
+<span class="fc" id="L43">        e.setPeriodoAcademicoId(d.periodoAcademicoId());</span>
+<span class="fc" id="L44">        e.setContenido(d.contenido());</span>
+<span class="fc" id="L45">        e.setNombreArchivo(d.nombreArchivo());</span>
+<span class="fc" id="L46">        e.setTamanioBytes(d.tamanioBytes());</span>
+<span class="fc" id="L47">        e.setEstado(EstadoInformacion.DISPONIBLE);</span>
+<span class="fc" id="L48">        e.setFechaCarga(d.fechaCarga());</span>
+<span class="fc" id="L49">        e.setUsuarioResponsable(d.usuarioResponsable());</span>
+<span class="fc" id="L50">        return e;</span>
+    }
+
+    private InformacionAcademica toDomain(InformacionAcademicaEntity e) {
+<span class="fc" id="L54">        return new InformacionAcademica(e.getId(), e.getPeriodoAcademicoId(), e.getContenido(),</span>
+<span class="fc" id="L55">                e.getNombreArchivo(), e.getTamanioBytes(), e.getEstado(),</span>
+<span class="fc" id="L56">                e.getFechaCarga(), e.getUsuarioResponsable());</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.15.202606040825</span></div></body></html>

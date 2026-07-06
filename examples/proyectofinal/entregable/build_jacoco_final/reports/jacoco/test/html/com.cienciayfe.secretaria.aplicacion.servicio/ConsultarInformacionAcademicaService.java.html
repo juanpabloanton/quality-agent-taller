@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ConsultarInformacionAcademicaService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">secretaria</a> &gt; <a href="index.source.html" class="el_package">com.cienciayfe.secretaria.aplicacion.servicio</a> &gt; <span class="el_source">ConsultarInformacionAcademicaService.java</span></div><h1>ConsultarInformacionAcademicaService.java</h1><pre class="source lang-java linenums">package com.cienciayfe.secretaria.aplicacion.servicio;
+
+import com.cienciayfe.secretaria.aplicacion.puerto.entrada.ConsultarInformacionAcademicaUseCase;
+import com.cienciayfe.secretaria.aplicacion.puerto.salida.InformacionAcademicaRepositorio;
+import com.cienciayfe.secretaria.aplicacion.puerto.salida.PeriodoAcademicoRepositorio;
+import com.cienciayfe.secretaria.dominio.excepcion.PeriodoNoHabilitadoException;
+import com.cienciayfe.secretaria.dominio.modelo.InformacionAcademica;
+import com.cienciayfe.secretaria.dominio.modelo.InformacionAcademica.EstadoInformacion;
+import com.cienciayfe.secretaria.dominio.modelo.PeriodoAcademico;
+import java.util.Optional;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+@Service
+@RequiredArgsConstructor
+public class ConsultarInformacionAcademicaService implements ConsultarInformacionAcademicaUseCase {
+
+    private final PeriodoAcademicoRepositorio periodoRepositorio;
+    private final InformacionAcademicaRepositorio informacionRepositorio;
+
+    @Override
+    public InformacionAcademica consultar(String codigoPeriodo) {
+<span class="fc" id="L23">        PeriodoAcademico periodo = periodoRepositorio.findByCodigo(codigoPeriodo)</span>
+<span class="fc" id="L24">                .orElseThrow(() -&gt; new PeriodoNoHabilitadoException(codigoPeriodo,</span>
+                        &quot;El período '&quot; + codigoPeriodo + &quot;' no existe en el sistema&quot;));
+
+<span class="fc" id="L27">        Optional&lt;InformacionAcademica&gt; existente = informacionRepositorio.findByPeriodoAcademicoId(periodo.id());</span>
+
+<span class="fc" id="L29">        return existente.orElseGet(() -&gt; new InformacionAcademica(</span>
+<span class="fc" id="L30">                null, periodo.id(), null, null, 0,</span>
+                EstadoInformacion.SIN_INFORMACION, null, null));
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.15.202606040825</span></div></body></html>
